@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Search, Star } from 'lucide-react';
+import { Check, ExternalLink, Search, Star } from 'lucide-react';
 import { CLINIC_INFO, VERIFIED_GOOGLE_REVIEWS } from '../data/clinicData';
 import { filterReviews } from '../utils/clinicLogic';
 
@@ -10,6 +10,42 @@ const REVIEW_THEMES = [
   'Affordability',
   'Waiting Time & Scheduling',
 ] as const;
+
+const ReviewerAvatar: React.FC<{
+  src: string;
+  name: string;
+  initials: string;
+}> = ({ src, name, initials }) => {
+  const [failed, setFailed] = useState(false);
+
+  return (
+    <div className="relative w-12 h-12 shrink-0">
+      {!failed && src ? (
+        <img
+          src={src}
+          alt={`${name} profile portrait`}
+          loading="eager"
+          onError={() => setFailed(true)}
+          className="w-12 h-12 rounded-full object-cover object-center border-2 border-white shadow-md ring-2 ring-[#0D9488]/25"
+        />
+      ) : (
+        <div
+          aria-hidden="true"
+          className="w-12 h-12 rounded-full bg-gradient-to-br from-[#0D9488] to-[#0284C7] text-white flex items-center justify-center font-display font-bold text-xs border-2 border-white shadow-md"
+        >
+          {initials}
+        </div>
+      )}
+      <span
+        title="Verified Google Maps Reviewer"
+        aria-hidden="true"
+        className="absolute -bottom-0.5 -right-0.5 w-4.5 h-4.5 rounded-full bg-[#0D9488] border-2 border-white text-white flex items-center justify-center shadow-xs"
+      >
+        <Check className="w-2.5 h-2.5 stroke-[3]" />
+      </span>
+    </div>
+  );
+};
 
 export const ReviewsSection: React.FC<{
   showAllControls?: boolean;
@@ -44,12 +80,12 @@ export const ReviewsSection: React.FC<{
           </h2>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 shrink-0">
+        <div className="flex flex-wrap items-center gap-3">
           <a
             href={CLINIC_INFO.cidUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-animated-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-xs font-bold whitespace-nowrap shrink-0"
+            className="btn-animated-primary inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-white text-xs font-bold whitespace-nowrap shrink-0"
           >
             All {CLINIC_INFO.googleRating.count} Google Reviews
             <ExternalLink className="w-3.5 h-3.5" />
@@ -58,7 +94,7 @@ export const ReviewsSection: React.FC<{
             <button
               type="button"
               onClick={onNavigateReviewsPage}
-              className="btn-liquid-secondary inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[#0F293A] text-xs font-bold whitespace-nowrap shrink-0 cursor-pointer"
+              className="btn-liquid-secondary inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-[#0F293A] text-xs font-bold whitespace-nowrap shrink-0 cursor-pointer"
             >
               Full Review Analysis
             </button>
@@ -93,7 +129,7 @@ export const ReviewsSection: React.FC<{
           <div
             role="group"
             aria-label="Filter reviews by rating"
-            className="flex items-center gap-1 p-1 bg-white/70 rounded-full border border-white"
+            className="flex flex-wrap items-center gap-1 p-1 bg-white/70 rounded-2xl sm:rounded-full border border-white max-w-full"
           >
             <button
               type="button"
@@ -131,7 +167,7 @@ export const ReviewsSection: React.FC<{
           </div>
 
           {showAllControls && (
-            <div className="relative">
+            <div className="relative w-full sm:w-auto">
               <Search className="w-3.5 h-3.5 text-[#47657A] absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type="search"
@@ -139,7 +175,7 @@ export const ReviewsSection: React.FC<{
                 placeholder="Search reviews..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-8 pr-3 py-1.5 text-xs rounded-full border border-white bg-white/80 focus:bg-white focus:border-[#0D9488] focus:outline-none"
+                className="w-full sm:w-auto pl-8 pr-3 py-1.5 text-xs rounded-full border border-white bg-white/80 focus:bg-white focus:border-[#0D9488] focus:outline-none"
               />
             </div>
           )}
@@ -172,22 +208,21 @@ export const ReviewsSection: React.FC<{
           {filteredReviews.map((review) => (
             <article
               key={review.id}
-              className="liquid-glass-card card-3d-hover rounded-3xl p-6 flex flex-col justify-between"
+              className="liquid-glass-card card-3d-hover rounded-3xl p-5 sm:p-6 flex flex-col justify-between overflow-hidden"
             >
               <div>
-                <div className="flex items-start justify-between gap-4 pb-4 border-b border-teal-900/10">
-                  <div className="flex items-center gap-3">
-                    <div
-                      aria-hidden="true"
-                      className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0D9488] to-[#0284C7] text-white flex items-center justify-center font-display font-bold text-xs shrink-0 shadow-xs"
-                    >
-                      {review.reviewerInitials}
-                    </div>
-                    <div>
-                      <h3 className="text-sm font-extrabold text-[#0F293A]">
+                <div className="flex flex-wrap items-start justify-between gap-3 pb-4 border-b border-teal-900/10">
+                  <div className="flex items-center gap-3.5 min-w-0">
+                    <ReviewerAvatar
+                      src={review.avatarUrl}
+                      name={review.reviewerName}
+                      initials={review.reviewerInitials}
+                    />
+                    <div className="min-w-0">
+                      <h3 className="text-sm font-extrabold text-[#0F293A] truncate">
                         {review.reviewerName}
                       </h3>
-                      <div className="flex items-center gap-1.5 text-xs text-[#47657A] mt-0.5">
+                      <div className="flex flex-wrap items-center gap-1.5 text-xs text-[#47657A] mt-0.5">
                         <span>{review.publishedLabel}</span>
                         <span aria-hidden="true">·</span>
                         <span>{review.source}</span>

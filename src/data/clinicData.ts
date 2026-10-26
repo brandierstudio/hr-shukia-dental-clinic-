@@ -38,6 +38,7 @@ export interface VerifiedReview {
   id: string;
   reviewerName: string;
   reviewerInitials: string;
+  avatarUrl: string;
   rating: number;
   relativeDate: string;
   isoDate: string;
@@ -733,6 +734,7 @@ export const VERIFIED_GOOGLE_REVIEWS: VerifiedReview[] = [
     id: 'rev-syed-shahiq-ibrahim',
     reviewerName: 'Syed Shahiq Ibrahim',
     reviewerInitials: 'SI',
+    avatarUrl: '/assets/avatars/syed-shahiq.jpg',
     rating: 5,
     relativeDate: '2 months ago',
     isoDate: '2026-08-22',
@@ -749,6 +751,7 @@ export const VERIFIED_GOOGLE_REVIEWS: VerifiedReview[] = [
     id: 'rev-muntaha-25',
     reviewerName: 'Muntaha Muntaha25',
     reviewerInitials: 'MM',
+    avatarUrl: '/assets/avatars/muntaha.jpg',
     rating: 5,
     relativeDate: '10 months ago',
     isoDate: '2025-12-08',
@@ -765,6 +768,7 @@ export const VERIFIED_GOOGLE_REVIEWS: VerifiedReview[] = [
     id: 'rev-zoya-ahmed',
     reviewerName: 'Zoya Ahmed',
     reviewerInitials: 'ZA',
+    avatarUrl: '/assets/avatars/zoya-ahmed.jpg',
     rating: 5,
     relativeDate: '3 years ago',
     isoDate: '2023-07-14',
@@ -781,6 +785,7 @@ export const VERIFIED_GOOGLE_REVIEWS: VerifiedReview[] = [
     id: 'rev-ayesha-mushtaq',
     reviewerName: 'ayesha mushtaq',
     reviewerInitials: 'AM',
+    avatarUrl: '/assets/avatars/ayesha-mushtaq.jpg',
     rating: 5,
     relativeDate: '5 years ago',
     isoDate: '2020-12-30',
@@ -797,6 +802,7 @@ export const VERIFIED_GOOGLE_REVIEWS: VerifiedReview[] = [
     id: 'rev-talha-d',
     reviewerName: 'Talha D',
     reviewerInitials: 'TD',
+    avatarUrl: '/assets/avatars/talha-d.jpg',
     rating: 1,
     relativeDate: '2 months ago',
     isoDate: '2026-07-30',

@@ -139,7 +139,7 @@ export const ClinicMap: React.FC<{ heightClass?: string }> = ({
             <strong className="text-[#172B3A]">1st Floor, 101 Abdullah Haroon Road</strong> (Near Gulzar Building), Saddar, Karachi
           </span>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           <a
             href={CLINIC_INFO.directionsUrl}
             target="_blank"
@@ -149,7 +149,7 @@ export const ClinicMap: React.FC<{ heightClass?: string }> = ({
             Open Turn-by-Turn Directions
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
-          <span aria-hidden="true">·</span>
+          <span aria-hidden="true" className="hidden sm:inline">·</span>
           <a
             href={CLINIC_INFO.cidUrl}
             target="_blank"

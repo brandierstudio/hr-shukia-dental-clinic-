@@ -199,7 +199,7 @@ export default function App() {
       : null;
 
   return (
-    <div className="min-h-screen flex flex-col liquid-glass-canvas text-[#0F293A] pb-14 md:pb-0">
+    <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden flex flex-col liquid-glass-canvas text-[#0F293A] pb-16 md:pb-0">
       {/* Google Maps Platform Demo Key Quota Banner (Only shown if quota exceeded) */}
       {gmpQuotaExceeded && (
         <div className="bg-amber-50 border-b border-amber-200 text-amber-900 px-4 py-2.5 text-xs md:text-sm text-center sticky top-0 z-50 shadow-sm">
@@ -440,32 +440,32 @@ export default function App() {
                       </p>
 
                       {/* Animated Liquid Buttons */}
-                      <div className="animate-fade-up-d3 mt-7 flex flex-wrap items-center gap-3.5">
+                      <div className="animate-fade-up-d3 mt-7 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
                         <button
                           type="button"
                           onClick={() => navigateTo({ page: 'contact' })}
-                          className="btn-animated-primary group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-white text-sm font-bold whitespace-nowrap shrink-0 cursor-pointer"
+                          className="btn-animated-primary group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full text-white text-sm font-bold whitespace-nowrap cursor-pointer"
                         >
-                          <Calendar className="w-4 h-4" />
+                          <Calendar className="w-4 h-4 shrink-0" />
                           <span>Book Appointment</span>
-                          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                          <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1.5" />
                         </button>
 
                         <button
                           type="button"
                           onClick={() => navigateTo({ page: 'services' })}
-                          className="btn-liquid-secondary group inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-[#0F293A] text-sm font-bold whitespace-nowrap shrink-0 cursor-pointer"
+                          className="btn-liquid-secondary group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-[#0F293A] text-sm font-bold whitespace-nowrap cursor-pointer"
                         >
                           <span>Explore Services</span>
-                          <ArrowRight className="w-4 h-4 text-[#0D9488] transition-transform duration-300 group-hover:translate-x-1" />
+                          <ArrowRight className="w-4 h-4 text-[#0D9488] shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
                         </button>
 
                         <a
                           href={CLINIC_INFO.phoneTelHref}
-                          className="btn-liquid-secondary inline-flex items-center gap-2 px-5 py-3.5 rounded-full text-sm font-mono-tabular font-bold text-[#0D9488] hover:text-[#0284C7] whitespace-nowrap shrink-0"
+                          className="btn-liquid-secondary inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full text-sm font-mono-tabular font-bold text-[#0D9488] hover:text-[#0284C7] whitespace-nowrap"
                         >
-                          <Phone className="w-4 h-4" />
-                          {CLINIC_INFO.phoneNational}
+                          <Phone className="w-4 h-4 shrink-0" />
+                          <span>{CLINIC_INFO.phoneNational}</span>
                         </a>
                       </div>
 
@@ -972,7 +972,7 @@ export default function App() {
             {/* SECTION 14 — LUMINOUS LIQUID GLASS APPOINTMENT CTA (No Dark Colors) */}
             <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 perspective-stage">
               <ScrollReveal3D>
-                <div className="liquid-glass-panel rounded-3xl p-8 md:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+                <div className="liquid-glass-panel rounded-3xl p-6 sm:p-8 md:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 lg:gap-8">
                   <div className="max-w-2xl">
                     <span className="text-xs font-bold uppercase tracking-wider text-[#0D9488]">
                       Dr. H.R. Sukhia Dental Surgery &amp; Orthodontics
@@ -985,22 +985,22 @@ export default function App() {
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-3.5 shrink-0">
+                  <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3.5 w-full lg:w-auto">
                     <a
                       href={CLINIC_INFO.phoneTelHref}
-                      className="btn-animated-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white text-sm font-bold whitespace-nowrap shrink-0"
+                      className="btn-animated-primary inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-white text-sm font-bold whitespace-nowrap w-full sm:w-auto"
                     >
-                      <Phone className="w-4 h-4" />
-                      Call {CLINIC_INFO.phoneNational}
+                      <Phone className="w-4 h-4 shrink-0" />
+                      <span>Call {CLINIC_INFO.phoneNational}</span>
                     </a>
                     <a
                       href={CLINIC_INFO.directionsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-liquid-secondary inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-[#0F293A] text-sm font-bold whitespace-nowrap shrink-0"
+                      className="btn-liquid-secondary inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-[#0F293A] text-sm font-bold whitespace-nowrap w-full sm:w-auto"
                     >
-                      <Navigation className="w-4 h-4 text-[#0D9488]" />
-                      Get Directions
+                      <Navigation className="w-4 h-4 text-[#0D9488] shrink-0" />
+                      <span>Get Directions</span>
                     </a>
                   </div>
                 </div>
@@ -1171,30 +1171,30 @@ export default function App() {
       </footer>
 
       {/* Discreet Mobile Liquid Glass Bottom Action Bar */}
-      <div className="md:hidden fixed bottom-0 inset-x-0 z-40 liquid-glass-nav px-3 py-2 flex items-center gap-2">
+      <div className="md:hidden fixed bottom-0 inset-x-0 z-40 liquid-glass-nav px-2.5 py-2 flex items-center gap-1.5 max-w-[100vw] overflow-hidden">
         <a
           href={CLINIC_INFO.phoneTelHref}
-          className="btn-animated-primary flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-full text-white text-xs font-bold whitespace-nowrap shrink-0"
+          className="btn-animated-primary flex-1 min-w-0 inline-flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-full text-white text-[11px] sm:text-xs font-bold whitespace-nowrap"
         >
-          <Phone className="w-3.5 h-3.5" />
-          Call {CLINIC_INFO.phoneNational}
+          <Phone className="w-3.5 h-3.5 shrink-0" />
+          <span className="truncate">Call {CLINIC_INFO.phoneNational}</span>
         </a>
         <a
           href={CLINIC_INFO.directionsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-liquid-secondary inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-full text-[#0F293A] text-xs font-bold whitespace-nowrap shrink-0"
+          className="btn-liquid-secondary inline-flex items-center justify-center gap-1 py-2 px-2.5 rounded-full text-[#0F293A] text-[11px] sm:text-xs font-bold whitespace-nowrap shrink-0"
         >
-          <Navigation className="w-3.5 h-3.5 text-[#0D9488]" />
-          Directions
+          <Navigation className="w-3.5 h-3.5 text-[#0D9488] shrink-0" />
+          <span>Directions</span>
         </a>
         <button
           type="button"
           onClick={() => navigateTo({ page: 'contact' })}
-          className="btn-liquid-secondary inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-full text-[#0F293A] text-xs font-bold whitespace-nowrap shrink-0 cursor-pointer"
+          className="btn-liquid-secondary inline-flex items-center justify-center gap-1 py-2 px-2.5 rounded-full text-[#0F293A] text-[11px] sm:text-xs font-bold whitespace-nowrap shrink-0 cursor-pointer"
         >
-          <Calendar className="w-3.5 h-3.5 text-[#0D9488]" />
-          Book
+          <Calendar className="w-3.5 h-3.5 text-[#0D9488] shrink-0" />
+          <span>Book</span>
         </button>
       </div>
     </div>

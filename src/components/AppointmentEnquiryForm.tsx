@@ -160,11 +160,11 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
   };
 
   return (
-    <div className="liquid-glass-panel rounded-3xl p-6 md:p-9">
+    <div className="liquid-glass-panel rounded-3xl p-5 sm:p-6 md:p-9 overflow-hidden max-w-full">
       <div className="border-b border-teal-900/10 pb-5 mb-6">
         <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[#0D9488] font-bold">
           <span>Appointment Enquiry Request</span>
-          <span aria-hidden="true">·</span>
+          <span aria-hidden="true" className="hidden sm:inline">·</span>
           <span className="font-mono-tabular text-[#0F293A]">
             Direct Desk: {CLINIC_INFO.phoneNational}
           </span>
@@ -189,7 +189,7 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
           role="status"
           aria-live="polite"
           data-testid="enquiry-confirmation-banner"
-          className="mb-6 rounded-lg border border-[#167D83]/30 bg-[#EAF5F4] p-5 text-[#172B3A]"
+          className="mb-6 rounded-lg border border-[#167D83]/30 bg-[#EAF5F4] p-4 sm:p-5 text-[#172B3A]"
         >
           <div className="flex items-start gap-3">
             <CheckCircle2 className="w-5 h-5 text-[#167D83] shrink-0 mt-0.5" />
@@ -242,7 +242,7 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
         </div>
       )}
 
-      <form onSubmit={handleSubmit} noValidate className="space-y-5">
+      <form onSubmit={handleSubmit} noValidate className="space-y-5 max-w-full">
         {/* Honeypot field for spam protection */}
         <div className="hidden" aria-hidden="true">
           <label htmlFor="clinic-website-hp">Leave this field blank</label>
@@ -257,7 +257,7 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div>
+          <div className="min-w-0">
             <label
               htmlFor="enquiry-patient-name"
               className="block text-xs font-semibold text-[#172B3A] mb-1.5"
@@ -274,7 +274,7 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
               onChange={(e) => handleChange('patientName', e.target.value)}
               aria-invalid={Boolean(errors.patientName)}
               aria-describedby={errors.patientName ? 'err-patient-name' : undefined}
-              className={`w-full rounded-lg border px-3.5 py-2.5 text-sm text-[#172B3A] bg-[#F8FAFC] focus:bg-white focus:outline-none focus:ring-2 transition-colors ${
+              className={`w-full max-w-full min-w-0 rounded-lg border px-3.5 py-2.5 text-sm text-[#172B3A] bg-[#F8FAFC] focus:bg-white focus:outline-none focus:ring-2 transition-colors ${
                 errors.patientName
                   ? 'border-red-500 focus:ring-red-200'
                   : 'border-[#E4EAF0] focus:border-[#167D83] focus:ring-[#167D83]/20'
@@ -288,7 +288,7 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
             )}
           </div>
 
-          <div>
+          <div className="min-w-0">
             <label
               htmlFor="enquiry-phone"
               className="block text-xs font-semibold text-[#172B3A] mb-1.5"
@@ -305,7 +305,7 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
               onChange={(e) => handleChange('phone', e.target.value)}
               aria-invalid={Boolean(errors.phone)}
               aria-describedby={errors.phone ? 'err-phone' : undefined}
-              className={`w-full rounded-lg border px-3.5 py-2.5 text-sm font-mono-tabular text-[#172B3A] bg-[#F8FAFC] focus:bg-white focus:outline-none focus:ring-2 transition-colors ${
+              className={`w-full max-w-full min-w-0 rounded-lg border px-3.5 py-2.5 text-sm font-mono-tabular text-[#172B3A] bg-[#F8FAFC] focus:bg-white focus:outline-none focus:ring-2 transition-colors ${
                 errors.phone
                   ? 'border-red-500 focus:ring-red-200'
                   : 'border-[#E4EAF0] focus:border-[#167D83] focus:ring-[#167D83]/20'
@@ -321,14 +321,14 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <div>
+          <div className="min-w-0">
             <label
               htmlFor="enquiry-date"
               className="block text-xs font-semibold text-[#172B3A] mb-1.5"
             >
               Preferred Visit Date (Mon–Sat) <span className="text-red-600">*</span>
             </label>
-            <div className="relative">
+            <div className="relative min-w-0 max-w-full">
               <input
                 id="enquiry-date"
                 name="preferredDate"
@@ -338,7 +338,7 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
                 onChange={(e) => handleChange('preferredDate', e.target.value)}
                 aria-invalid={Boolean(errors.preferredDate)}
                 aria-describedby={errors.preferredDate ? 'err-date' : undefined}
-                className={`w-full rounded-lg border px-3.5 py-2.5 text-sm font-mono-tabular text-[#172B3A] bg-[#F8FAFC] focus:bg-white focus:outline-none focus:ring-2 transition-colors ${
+                className={`w-full max-w-full min-w-0 block rounded-lg border px-3.5 py-2.5 text-sm font-mono-tabular text-[#172B3A] bg-[#F8FAFC] focus:bg-white focus:outline-none focus:ring-2 transition-colors ${
                   errors.preferredDate
                     ? 'border-red-500 focus:ring-red-200'
                     : 'border-[#E4EAF0] focus:border-[#167D83] focus:ring-[#167D83]/20'
@@ -353,7 +353,7 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
             )}
           </div>
 
-          <div>
+          <div className="min-w-0">
             <label
               htmlFor="enquiry-time-slot"
               className="block text-xs font-semibold text-[#172B3A] mb-1.5"
@@ -365,7 +365,7 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
               name="preferredTimeSlot"
               value={formData.preferredTimeSlot}
               onChange={(e) => handleChange('preferredTimeSlot', e.target.value)}
-              className="w-full rounded-lg border border-[#E4EAF0] px-3.5 py-2.5 text-sm text-[#172B3A] bg-[#F8FAFC] focus:bg-white focus:border-[#167D83] focus:outline-none focus:ring-2 focus:ring-[#167D83]/20 transition-colors"
+              className="w-full max-w-full min-w-0 rounded-lg border border-[#E4EAF0] px-3.5 py-2.5 text-sm text-[#172B3A] bg-[#F8FAFC] focus:bg-white focus:border-[#167D83] focus:outline-none focus:ring-2 focus:ring-[#167D83]/20 transition-colors"
             >
               <option value="2:00 PM – 3:00 PM (Saturday / Early Slot)">
                 2:00 PM – 3:00 PM (Saturday / Early Slot)
@@ -376,7 +376,7 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
             </select>
           </div>
 
-          <div>
+          <div className="min-w-0">
             <label
               htmlFor="enquiry-service"
               className="block text-xs font-semibold text-[#172B3A] mb-1.5"
@@ -388,7 +388,7 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
               name="serviceInterest"
               value={formData.serviceInterest}
               onChange={(e) => handleChange('serviceInterest', e.target.value)}
-              className="w-full rounded-lg border border-[#E4EAF0] px-3.5 py-2.5 text-sm text-[#172B3A] bg-[#F8FAFC] focus:bg-white focus:border-[#167D83] focus:outline-none focus:ring-2 focus:ring-[#167D83]/20 transition-colors"
+              className="w-full max-w-full min-w-0 rounded-lg border border-[#E4EAF0] px-3.5 py-2.5 text-sm text-[#172B3A] bg-[#F8FAFC] focus:bg-white focus:border-[#167D83] focus:outline-none focus:ring-2 focus:ring-[#167D83]/20 transition-colors"
             >
               {SERVICES_DATA.map((s) => (
                 <option key={s.slug} value={s.title}>
@@ -410,7 +410,7 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
 
         {!compact && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div>
+            <div className="min-w-0">
               <span className="block text-xs font-semibold text-[#172B3A] mb-1.5">
                 Preferred Contact Method
               </span>
@@ -432,7 +432,7 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
               </div>
             </div>
 
-            <div className="md:col-span-2">
+            <div className="md:col-span-2 min-w-0">
               <label
                 htmlFor="enquiry-message"
                 className="block text-xs font-semibold text-[#172B3A] mb-1.5"
@@ -447,34 +447,34 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
                 placeholder="e.g. Enquiring about fixed braces for crowded teeth"
                 value={formData.message}
                 onChange={(e) => handleChange('message', e.target.value)}
-                className="w-full rounded-lg border border-[#E4EAF0] px-3.5 py-2.5 text-sm text-[#172B3A] bg-[#F8FAFC] focus:bg-white focus:border-[#0D9488] focus:outline-none focus:ring-2 focus:ring-[#0D9488]/20 transition-colors"
+                className="w-full max-w-full min-w-0 rounded-lg border border-[#E4EAF0] px-3.5 py-2.5 text-sm text-[#172B3A] bg-[#F8FAFC] focus:bg-white focus:border-[#0D9488] focus:outline-none focus:ring-2 focus:ring-[#0D9488]/20 transition-colors"
               />
             </div>
           </div>
         )}
 
-        <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-teal-900/10">
+        <div className="pt-3 flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-t border-teal-900/10">
           <p className="text-xs text-[#47657A] leading-relaxed max-w-xl">
             <strong className="text-[#0F293A]">Note:</strong> Submitting this form logs an appointment enquiry; please call to finalize your exact arrival slot.
           </p>
 
-          <div className="flex items-center gap-3 shrink-0">
-            <a
-              href={CLINIC_INFO.phoneTelHref}
-              className="btn-liquid-secondary inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[#0F293A] text-xs font-bold whitespace-nowrap shrink-0"
-            >
-              <Phone className="w-4 h-4 text-[#0D9488]" />
-              Call {CLINIC_INFO.phoneNational}
-            </a>
-
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
             <button
               type="submit"
               disabled={submitting}
-              className="btn-animated-primary inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-white text-xs font-bold disabled:opacity-60 whitespace-nowrap shrink-0 cursor-pointer"
+              className="btn-animated-primary inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-2.5 rounded-full text-white text-xs font-bold disabled:opacity-60 w-full sm:w-auto cursor-pointer"
             >
-              <Send className="w-4 h-4" />
-              {submitting ? 'Logging Enquiry...' : 'Submit Appointment Enquiry'}
+              <Send className="w-4 h-4 shrink-0" />
+              <span>{submitting ? 'Logging Enquiry...' : 'Submit Appointment Enquiry'}</span>
             </button>
+
+            <a
+              href={CLINIC_INFO.phoneTelHref}
+              className="btn-liquid-secondary inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-2.5 rounded-full text-[#0F293A] text-xs font-bold w-full sm:w-auto"
+            >
+              <Phone className="w-4 h-4 text-[#0D9488] shrink-0" />
+              <span>Call {CLINIC_INFO.phoneNational}</span>
+            </a>
           </div>
         </div>
       </form>

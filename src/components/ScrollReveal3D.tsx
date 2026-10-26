@@ -50,10 +50,10 @@ export const ScrollReveal3D: React.FC<ScrollReveal3DProps> = ({
 
   const hiddenTransform =
     tiltDirection === 'left'
-      ? 'perspective(1200px) translateY(34px) rotateX(8deg) rotateY(6deg) scale(0.96)'
+      ? 'perspective(1200px) translateY(22px) rotateX(3deg) rotateY(2deg) scale(0.97)'
       : tiltDirection === 'right'
-        ? 'perspective(1200px) translateY(34px) rotateX(8deg) rotateY(-6deg) scale(0.96)'
-        : 'perspective(1200px) translateY(36px) rotateX(10deg) scale(0.96)';
+        ? 'perspective(1200px) translateY(22px) rotateX(3deg) rotateY(-2deg) scale(0.97)'
+        : 'perspective(1200px) translateY(24px) rotateX(3.5deg) scale(0.97)';
 
   const visibleTransform =
     'perspective(1200px) translateY(0px) rotateX(0deg) rotateY(0deg) scale(1)';
@@ -63,11 +63,12 @@ export const ScrollReveal3D: React.FC<ScrollReveal3DProps> = ({
       ref={ref}
       style={{
         transform: isVisible ? visibleTransform : hiddenTransform,
+        transformOrigin: 'top center',
         opacity: isVisible ? 1 : 0.15,
         transition: `transform 780ms cubic-bezier(0.16, 1, 0.3, 1) ${delayMs}ms, opacity 680ms cubic-bezier(0.16, 1, 0.3, 1) ${delayMs}ms`,
         willChange: 'transform, opacity',
       }}
-      className={className}
+      className={`max-w-full ${className}`}
     >
       {children}
     </div>
