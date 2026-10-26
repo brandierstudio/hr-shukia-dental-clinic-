@@ -1,0 +1,778 @@
+# MASTER WEBSITE DEVELOPMENT PROMPT — HR SUKHIA DENTAL CLINIC, KARACHI
+
+## YOUR ROLE
+
+Act as a senior web design agency combining the skills of a brand strategist, healthcare website UX designer, UI designer, conversion-focused copywriter, local SEO specialist, professional photographer, motion designer, and full-stack developer.
+
+Your task is to research, design, and build a complete, production-quality website for HR Sukhia Dental Clinic in Saddar, Karachi.
+
+This is not a generic dental website exercise. The final website must feel like the authentic digital home of this specific clinic, its real dentist, its real location, its genuine reputation, and its actual patient experience.
+
+Do not stop at a design concept, wireframe, or written strategy. Research the business first, then implement the complete working website in the available development environment.
+
+BUSINESS PROFILE:
+Google Maps: https://maps.app.goo.gl/RGWmGEUgHwFam5qf9
+
+Known business name: HR Sukhia Dental Clinic
+Location: 101 Abdullah Haroon Road, Saddar, Karachi, Sindh, Pakistan
+Publicly listed contact number: +92 333 3770353
+Primary business categories: Dental clinic, dentistry and orthodontics.
+
+Treat all business details as research leads, not as permission to invent missing information. Verify them against the Google Business Profile and other official or reliable sources wherever possible.
+
+---
+
+# 1. RESEARCH THE REAL BUSINESS BEFORE DESIGNING
+
+Before writing code, investigate the business thoroughly.
+
+Research the following:
+
+- Official Google Maps profile, exact business name, address, telephone number, opening hours, current rating and review count.
+- All publicly accessible clinic photographs, including exterior, entrance, reception, treatment rooms, equipment, signage, team and dentist photographs.
+- Official social media pages, especially the clinic's Facebook presence.
+- The dentist's publicly available professional biography, qualifications, orthodontic background, professional roles and experience.
+- Actual dental services offered by this particular clinic.
+- Genuine patient reviews, including recurring compliments, patient concerns, waiting-time feedback and affordability-related comments.
+- Available authentic patient treatment cases or before-and-after photographs, where their use is authorized.
+- Nearby dental clinics and competing websites in Karachi.
+- Strong dental clinic websites and established healthcare website designs for reference.
+
+Known public research leads include:
+
+- The clinic is associated with Dr. HR Sukhia.
+- Public listings describe orthodontics and fixed braces as important aspects of the clinic's work.
+- Patient reviews mention braces, orthodontic treatment, friendly care, affordability and waiting times.
+- A public clinic listing describes the address as 101 Abdullah Haroon Road, Saddar, Karachi.
+- A publicly listed contact number is +92 333 3770353.
+
+Verify every relevant detail before displaying it as fact. Research the dentist's official biography and professional credentials rather than assuming that every qualification in a directory is current.
+
+If a website or social media page is inaccessible, do not pretend to have examined it. Continue using accessible sources and clearly distinguish verified information from unverified details.
+
+Create a concise internal research inventory before proceeding:
+
+1. Verified business information.
+2. Verified services.
+3. Verified dentist biography and credentials.
+4. Verified review excerpts and source links.
+5. Available authentic visual assets.
+6. Missing information requiring owner confirmation.
+7. Recommended design direction and reasons.
+
+Do not fabricate business facts to fill research gaps.
+
+# 2. CREATIVE DIRECTION — A PREMIUM, AUTHENTIC DENTAL BRAND
+
+The website must look professionally art-directed, not automatically generated from a standard dental template.
+
+Design inspiration should come from the quality of established healthcare websites, premium private dental practices, modern editorial layouts and contemporary minimal design systems.
+
+Study real references before implementation. Extract useful principles such as hierarchy, typography, spacing, photography, navigation, trust-building and appointment conversion. Do not copy another clinic's branding or reproduce its website.
+
+VISUAL PERSONALITY:
+
+- Professional and trustworthy.
+- Clean, reassuring and welcoming.
+- Modern without looking futuristic or artificial.
+- Premium without appearing expensive or intimidating.
+- Clinically credible, with a warm human touch.
+- Appropriate for families, adults and patients seeking orthodontic treatment.
+
+Use a light, sophisticated interface rather than an unnecessarily dark website.
+
+Suggested starting palette:
+
+- Primary navy: #16324F
+- Deep teal: #167D83
+- Background: #F8FAFC
+- White surfaces: #FFFFFF
+- Primary text: #172B3A
+- Secondary text: #667582
+- Subtle border: #E4EAF0
+- Soft accent background: #EAF5F4
+
+Refine these colors after researching the clinic's original signage, logo and existing visual identity. If the original brand uses a recognizable palette, preserve it appropriately.
+
+Avoid excessive gradients, bright neon colors, random purple-blue glows, excessive glassmorphism, giant rounded cards, unnecessary decorative blobs and generic AI-generated medical illustrations.
+
+TYPOGRAPHY:
+
+Use a restrained combination of a professional heading font such as Manrope or DM Sans and a highly readable body font such as Inter. Google Fonts may be used if appropriate.
+
+Establish a clear type scale with strong headlines, comfortable paragraph line-height, readable service labels and consistent button typography.
+
+Use generous whitespace, disciplined alignment, clear content widths and a consistent spacing system.
+
+# 3. ORIGINAL BRANDING AND LOGO
+
+Find the clinic's actual logo or signage-based identity through its official public business sources.
+
+Use the original logo wherever available and legally usable.
+
+- Preserve its real lettering, proportions, symbol and colors.
+- Do not replace the clinic logo with an invented tooth icon.
+- Do not recreate an existing logo inaccurately.
+- If the original logo is low-resolution, use the cleanest authorized source available.
+- If vector artwork is unavailable, produce a carefully cleaned, high-resolution version without changing the underlying design.
+- Keep a separate light-background and dark-background logo variation only if appropriate.
+- Create a matching favicon from the genuine logo or an authorized simplified mark.
+
+If no authentic logo file can be obtained, use a refined typographic wordmark as a temporary editable fallback and request the original logo from the owner.
+
+# 4. AUTHENTIC PHOTOGRAPHY — A CRITICAL REQUIREMENT
+
+Photography must be one of the strongest parts of this website.
+
+Do not fill the website with generic stock photos when genuine clinic imagery is available.
+
+First, create an asset inventory from authorized sources:
+
+- Original clinic logo.
+- Real dentist portrait.
+- Real clinic exterior and entrance.
+- Actual reception and waiting area.
+- Actual treatment room.
+- Real dental equipment.
+- Real team photographs, if available.
+- Authorized treatment case photographs.
+- Other genuine clinic photographs suitable for the homepage.
+
+Use these assets strategically throughout the site. The same authentic photograph may be reused when appropriate, but avoid repeating the same image in every section.
+
+IMAGE ENHANCEMENT WORKFLOW:
+
+Some existing photographs may be blurry, poorly lit, compressed or captured on an ordinary phone. Improve their presentation professionally.
+
+Use appropriate image enhancement, denoising, sharpening, exposure correction, white balance, contrast adjustment, cropping and perspective correction.
+
+Where available, upscale low-resolution photographs with a suitable image-enhancement tool.
+
+The result should feel like a professionally photographed version of the actual clinic, not an invented clinic.
+
+STRICT IMAGE INTEGRITY RULES:
+
+- Never alter the dentist's identity, face, skin tone, age or recognizable features.
+- Never generate a different dentist and present that person as Dr. HR Sukhia.
+- Never invent treatment equipment, clinic rooms, certificates, medical qualifications or staff.
+- Never manipulate patient treatment photographs to exaggerate clinical results.
+- Never generate fake patient photographs and present them as real patients.
+- Do not use private patient photographs without appropriate permission.
+- Obtain authorization before publishing identifiable patient images or treatment cases, especially before-and-after photographs.
+- Do not assume that an image being publicly visible on Google Maps grants permission to republish it.
+- Prefer authorized original assets supplied by the clinic or obtained with explicit permission.
+
+If an image is not available, use a premium licensed stock photograph or an honest placeholder until an authentic asset can be supplied. Do not imply that stock models are the actual clinic's dentist, team or patients.
+
+Use a consistent photographic treatment: natural skin tones, balanced whites, soft daylight, realistic colors and clean compositions.
+
+IMAGE OPTIMIZATION:
+
+- Use WebP or AVIF where appropriate.
+- Generate responsive image sizes.
+- Use descriptive filenames and meaningful alt text.
+- Lazy-load below-the-fold images.
+- Do not lazy-load the primary hero image unnecessarily.
+- Reserve image dimensions to prevent layout shifts.
+- Avoid enlarging a tiny thumbnail into a visibly pixelated full-width hero.
+
+# 5. THE DENTIST'S PERSONAL STORY
+
+The real dentist should be an important part of the website, not an anonymous portrait hidden on the About page.
+
+Research Dr. HR Sukhia's actual professional background using official institutional pages and reliable public sources.
+
+If verified, include relevant qualifications, orthodontic expertise, professional appointments and career background.
+
+Create a dedicated section that communicates the dentist's real professional identity and treatment philosophy without exaggerated claims.
+
+Potential content structure:
+
+- Authentic portrait.
+- Full verified name and professional title.
+- A concise professional introduction.
+- Verified qualifications and relevant professional roles.
+- Actual clinical focus and services.
+- A link to the complete About the Dentist page.
+
+If a family history or multigenerational clinic story is mentioned in public reviews, verify it directly with the owner before presenting it as official history.
+
+Do not invent years of experience, patient counts, awards, success rates or professional affiliations.
+
+# 6. WEBSITE STRUCTURE
+
+Build a complete responsive website with the following pages, adapting the final structure to the verified services and available information.
+
+A. HOME
+B. ABOUT THE DENTIST
+C. DENTAL SERVICES
+D. INDIVIDUAL SERVICE PAGES
+E. PATIENT REVIEWS
+F. GALLERY / TREATMENT CASES
+G. CONTACT & LOCATION
+H. FREQUENTLY ASKED QUESTIONS
+I. PRIVACY POLICY
+
+Individual service pages should be created for genuinely offered services, such as:
+
+- Orthodontics and fixed braces.
+- Dental implants.
+- General dental care.
+- Cosmetic dentistry.
+- Teeth cleaning and polishing.
+- Dentures and restorative treatment.
+- Other services only when verified.
+
+Do not automatically publish every example above as a confirmed service. Confirm availability before publishing.
+
+Where useful, build a shared appointment enquiry component and reusable page templates so the website can be maintained efficiently.
+
+# 7. HOMEPAGE — EXACT EXPERIENCE AND SECTION ORDER
+
+Design the homepage as a carefully paced story. Every section should have a clear purpose, polished visuals and a natural route to appointment enquiries.
+
+SECTION 1 — TOP INFORMATION BAR
+
+Create a slim, elegant information bar with verified opening hours or a short appointment message.
+
+Include a telephone shortcut if space permits.
+
+All information must be editable. Never display unverified hours as current.
+
+SECTION 2 — PREMIUM NAVIGATION
+
+Build a clean navigation header featuring:
+
+- Original clinic logo.
+- Home.
+- About the Dentist.
+- Services.
+- Patient Reviews.
+- Gallery.
+- Contact.
+- A prominent “Book an Appointment” button.
+
+Keep the header lightweight, correctly aligned and easy to navigate.
+
+On desktop, use a polished horizontal navigation layout. On mobile, use a fully functional accessible menu with smooth opening and closing transitions.
+
+A sticky header may be used after scrolling, provided it does not obscure content.
+
+SECTION 3 — HERO
+
+The hero must immediately establish trust, identify the clinic and make it easy to contact the dentist.
+
+Use a refined two-column desktop layout, with copy on one side and a strong authentic clinical photograph on the other.
+
+The photograph should ideally show the real dentist or the real clinic. If no authorized image is available, use a suitable licensed dental image without pretending it depicts this specific clinic.
+
+Possible headline direction:
+
+“Thoughtful Dental Care. Confident Smiles.”
+
+Supporting copy should explain the clinic's verified focus on dental care and orthodontic treatment in Saddar, Karachi.
+
+Primary CTA: “Book an Appointment”
+
+Secondary CTA: “Explore Dental Services”
+
+Include a subtle location line and a verified rating only when current source data has been checked.
+
+Do not use fake counters, invented patient numbers, fabricated review totals or unsupported claims.
+
+Keep the hero visually striking without making it excessively tall. The main headline and appointment action should remain easy to find on a typical laptop and mobile screen.
+
+SECTION 4 — TRUST INDICATORS
+
+Create a restrained trust strip immediately after the hero.
+
+Use only verified signals, such as:
+
+- Genuine Google review rating.
+- Actual patient review count.
+- Verified orthodontic focus.
+- Real clinic location.
+- Verified professional credentials.
+
+Each item must be factually supportable.
+
+Do not manufacture awards, certifications, guarantees or statistics.
+
+SECTION 5 — INTRODUCING THE CLINIC
+
+Create an editorial-style section introducing HR Sukhia Dental Clinic and the actual dentist.
+
+Use a genuine clinic photograph and concise, human-sounding copy.
+
+Explain the clinic's approach to dental care based on verified information, rather than generic statements about being the best clinic.
+
+CTA: “Meet Dr. HR Sukhia”
+
+SECTION 6 — DENTAL SERVICES
+
+Display the clinic's confirmed services in a refined grid or alternating editorial layout.
+
+Each service should include:
+
+- Relevant authentic or licensed image.
+- Service name.
+- Short, clear explanation.
+- Link to its dedicated service page.
+- Optional appointment CTA.
+
+Give orthodontics and braces appropriate prominence if research confirms that they are central to the clinic's practice.
+
+Do not use misleading imagery or promise particular clinical outcomes.
+
+SECTION 7 — THE DENTIST
+
+Create a visually distinctive section dedicated to the actual dentist.
+
+Use an authorized real portrait, verified professional biography and relevant qualifications.
+
+The design should feel personal and credible, with a clean image, readable copy and an unobtrusive background.
+
+CTA: “Learn More About the Dentist”
+
+SECTION 8 — WHY PATIENTS CHOOSE THE CLINIC
+
+Build this section from real, recurring themes in the available reviews.
+
+Possible themes to investigate include:
+
+- Patient feedback about orthodontic care.
+- Clear communication and a welcoming approach.
+- Affordability-related feedback.
+- Convenient location.
+- Experiences with waiting times.
+
+Only present themes supported by the research.
+
+Do not suppress legitimate concerns by pretending every patient has an identical experience. Avoid absolute claims such as “painless treatment,” “guaranteed results” or “100% satisfaction.”
+
+SECTION 9 — REAL PATIENT REVIEWS
+
+This section is essential.
+
+Build a professional Google Reviews experience using genuine, attributable customer feedback.
+
+Review cards should include, when available and permitted:
+
+- Actual reviewer name or the publicly displayed name.
+- Original review text.
+- Original review date.
+- Star rating.
+- Source attribution to Google.
+- An optional verified review-source link.
+
+Display only genuine review content.
+
+Never invent testimonials, customer names, dates, star ratings or review photographs.
+
+Do not rewrite a patient's words in a way that changes the meaning of their feedback.
+
+If customer photographs are used, obtain permission to republish them and verify their connection to the review. Do not assume that a reviewer's Google profile photograph may automatically be copied onto the clinic website.
+
+Where practical, use the Google Maps profile as the review destination or integrate an authorized, reliable reviews solution. Do not scrape private information or circumvent platform restrictions.
+
+Include a button such as “Read More Google Reviews” that links to the actual business profile.
+
+Use a horizontal carousel on desktop only if it remains intuitive and accessible. On mobile, use touch-friendly cards or a clean vertical list. Ensure review text can be read without awkward clipping.
+
+If automated live review integration is unavailable, implement a manually maintained collection of verified reviews with source URLs and a clear refresh process.
+
+Do not display fake reviews as temporary placeholders in a client-presentable production demo.
+
+SECTION 10 — REAL CLINIC GALLERY
+
+Build an elegant gallery featuring authorized photographs of the actual clinic.
+
+Prioritize:
+
+- Exterior and entrance.
+- Treatment environment.
+- Reception and waiting area.
+- Real dentist and team.
+- Equipment and facilities.
+- Authorized clinical cases, where available.
+
+Use a balanced grid or editorial image composition rather than a generic collection of identical square cards.
+
+Provide a lightbox for appropriate images, with keyboard navigation, touch support, clear close controls and accessible descriptions.
+
+Do not publish identifiable patient treatment images without appropriate consent.
+
+SECTION 11 — HOW TO GET STARTED
+
+Explain the real appointment process only to the extent it can be verified.
+
+A possible structure is:
+
+1. Contact the clinic.
+2. Arrange an appointment.
+3. Discuss dental concerns with the dentist.
+4. Receive an appropriate assessment and treatment recommendations.
+
+Present this as a general visit flow, not a guaranteed treatment protocol.
+
+Do not make clinical promises or invent appointment procedures.
+
+SECTION 12 — LOCATION AND DIRECTIONS
+
+Create a location section using the verified clinic address.
+
+Display:
+
+101 Abdullah Haroon Road, Saddar, Karachi, Pakistan
+
+Confirm the exact address against the business profile before launch.
+
+Include:
+
+- Embedded Google Map.
+- “Get Directions” button.
+- Clickable telephone number.
+- Verified opening hours.
+- A short location description based on confirmed details.
+
+The map must point to the actual clinic, not merely to the center of Karachi.
+
+SECTION 13 — FREQUENTLY ASKED QUESTIONS
+
+Write a concise, useful FAQ based on verified clinic information and recurring customer questions.
+
+Potential topics include:
+
+- How can I book an appointment?
+- Where is the clinic located?
+- Which dental services are available?
+- Does the clinic offer orthodontic treatment?
+- How can I ask about braces treatment costs?
+- What should I bring to my first appointment?
+- How can I confirm the current opening hours?
+
+Answer only what can be supported.
+
+For pricing, if exact current fees are unavailable, invite visitors to contact the clinic for an assessment or quotation. Do not invent prices.
+
+SECTION 14 — FINAL APPOINTMENT CTA
+
+Create a strong closing section with a clean layout and a reassuring message.
+
+Possible heading:
+
+“Ready to Take the Next Step for Your Dental Health?”
+
+Supporting text should invite visitors to contact the clinic for appointment enquiries.
+
+Primary CTA: “Call the Clinic”
+
+Secondary CTA: “Get Directions”
+
+Include WhatsApp only if the clinic's official WhatsApp contact is confirmed.
+
+SECTION 15 — FOOTER
+
+Include:
+
+- Original logo.
+- Short verified business description.
+- Navigation links.
+- Confirmed services.
+- Telephone number.
+- Address.
+- Verified opening hours.
+- Google Maps link.
+- Official social media links.
+- Privacy policy.
+- Copyright notice.
+
+Avoid fake social media links and unnecessary footer clutter.
+
+# 8. SERVICE PAGE DESIGN
+
+Every individual service page must have its own useful content, layout and imagery rather than being a duplicate of the homepage.
+
+Each page should include:
+
+- Service-specific hero heading.
+- Clear, educational introduction.
+- Relevant licensed or authorized imagery.
+- What the service generally involves.
+- Who may wish to enquire about it.
+- A realistic explanation of assessment and treatment planning.
+- Frequently asked questions.
+- Appointment CTA.
+- Links to related services.
+- Relevant dentist credentials only when verified.
+
+Clinical content should be cautious, accurate and reviewed by the clinic before publication. Do not diagnose visitors or guarantee outcomes.
+
+Do not create thin, repetitive service pages solely to target search keywords.
+
+# 9. PREMIUM ANIMATIONS AND MICRO-INTERACTIONS
+
+Animations should create a refined, modern experience without making the clinic seem like a technology startup.
+
+Use:
+
+- Subtle hero image entrance.
+- Gentle text reveal on initial viewport entry.
+- Small staggered entrances for service cards.
+- Refined button hover and press states.
+- Soft image transitions.
+- Elegant navigation transitions.
+- Smooth anchor scrolling.
+- A restrained sticky-header transition.
+- Gentle gallery lightbox animations.
+- Mobile menu transitions.
+- Subtle section separators and background changes.
+
+Use short, purposeful transitions, generally around 150–350 milliseconds for interface interactions, with longer transitions reserved for larger visual reveals.
+
+Avoid:
+
+- Constantly moving elements.
+- Excessive parallax.
+- Heavy scroll-jacking.
+- Flashing animations.
+- Autoplay video that slows the site.
+- Large animation libraries for trivial effects.
+- Animations that interfere with reading or appointment booking.
+
+Respect prefers-reduced-motion settings. All core functionality must work even when animation is disabled.
+
+# 10. RESPONSIVE DESIGN — DESKTOP, TABLET AND MOBILE
+
+Do not treat mobile as a compressed desktop layout. Design a complete responsive experience.
+
+DESKTOP:
+
+- Balanced content widths.
+- Refined whitespace.
+- Professional navigation.
+- High-quality image compositions.
+- Clear visual hierarchy.
+- Appropriate hover states.
+- No unnecessarily wide paragraphs.
+
+TABLET:
+
+- Reflowed layouts.
+- Carefully adjusted headings.
+- Balanced image-to-text ratios.
+- Navigation that remains usable.
+- Consistent section spacing.
+
+MOBILE:
+
+- Fast-loading, compact hero.
+- Readable text without zooming.
+- Single-column sections where appropriate.
+- Touch-friendly controls.
+- A functional collapsible navigation menu.
+- Properly sized images.
+- Horizontal overflow eliminated.
+- No overlapping buttons or cut-off text.
+- Simple appointment and directions access.
+- Correctly formatted Pakistani telephone number.
+- Responsive review cards and gallery.
+- Comfortable forms with clear validation.
+
+Consider a discreet sticky bottom action bar on mobile with “Call” and “Directions” or “Appointment” actions.
+
+Keep it clear of browser controls and safe areas. Do not cover page content or other important controls.
+
+Test at approximately 360px, 390px, 430px, 768px, 1024px, 1440px and wider desktop sizes.
+
+# 11. APPOINTMENT AND CONTACT FUNCTIONALITY
+
+The website must be functional, not just visually complete.
+
+Implement:
+
+- Click-to-call links using the verified phone number.
+- Google Maps directions.
+- Appointment enquiry form.
+- Appropriate WhatsApp link only if verified.
+- Contact information in a centralized configuration.
+- Clear loading, success and error states.
+- Accessible form labels and validation.
+- Spam protection appropriate to the implementation.
+
+The enquiry form may request:
+
+- Patient or contact name.
+- Phone number.
+- Preferred appointment date.
+- Preferred contact method.
+- Optional message.
+
+Collect only information that is genuinely necessary.
+
+If an actual booking system is unavailable, clearly label the form as an appointment enquiry rather than promising a confirmed booking.
+
+Do not pretend that a message has been sent if there is no working backend.
+
+Connect the form to an actual supported delivery method when available. Otherwise, provide a transparent contact fallback and document the configuration required to activate submission.
+
+Never place private credentials, API keys or patient data in frontend code.
+
+Because this is a healthcare website, include a suitable privacy policy and avoid collecting medical history unnecessarily. Do not introduce third-party patient-data tracking without appropriate review and consent.
+
+# 12. LOCAL SEO FOR KARACHI
+
+Implement sensible technical and on-page SEO.
+
+Potential keyword themes, to be refined through research:
+
+- Dental clinic in Saddar Karachi.
+- Dentist in Saddar Karachi.
+- Orthodontist in Karachi.
+- Braces treatment in Karachi.
+- Dental implants in Karachi.
+- Dental care in Saddar.
+
+Only target services that the clinic actually provides.
+
+Implement:
+
+- Unique page titles and meta descriptions.
+- One clear primary H1 per page.
+- Logical H2 and H3 hierarchy.
+- Descriptive page URLs.
+- Canonical URLs once the production domain is known.
+- XML sitemap.
+- Robots.txt.
+- Open Graph metadata.
+- Descriptive image alt text.
+- Internal links between relevant pages.
+- Correct local contact information.
+- A Google Maps link and map embed.
+- Fast-loading optimized images.
+- Appropriate LocalBusiness or more specific supported structured data.
+- Relevant Dentist schema where appropriate and compliant with current schema guidelines.
+
+Use only verified business information in structured data.
+
+Do not fabricate aggregate ratings, reviews, credentials or address information in schema markup.
+
+Do not promise a specific Google ranking.
+
+Do not publish a fake domain, fake email address or nonexistent social profile.
+
+# 13. ACCESSIBILITY AND PERFORMANCE
+
+Follow WCAG 2.2 AA principles where practical.
+
+Ensure:
+
+- Keyboard-accessible navigation.
+- Visible focus indicators.
+- Sufficient color contrast.
+- Semantic HTML.
+- Proper form labels.
+- Accessible dialogs and image galleries.
+- Meaningful alt text.
+- Reduced-motion support.
+- Usable touch targets.
+- No information communicated by color alone.
+
+Performance priorities:
+
+- Minimize unnecessary JavaScript.
+- Use responsive modern image formats.
+- Lazy-load below-the-fold images.
+- Avoid layout shifts.
+- Use efficient fonts.
+- Keep animations lightweight.
+- Optimize the hero's loading priority.
+- Avoid excessive third-party scripts.
+
+Aim for strong Core Web Vitals and a mobile Lighthouse performance score of 90 or higher where the actual hosting environment and third-party integrations allow. Measure rather than falsely claiming a score.
+
+# 14. TECHNICAL IMPLEMENTATION
+
+Use the framework and project structure best supported by the available environment.
+
+If starting from scratch, prefer a modern component-based framework such as Next.js with TypeScript and a maintainable styling system, unless the environment recommends a better-supported alternative.
+
+Build reusable components for:
+
+- Header and navigation.
+- Footer.
+- Hero.
+- Service cards.
+- Review cards.
+- Dentist profile.
+- Gallery and lightbox.
+- Contact information.
+- Appointment enquiry form.
+- FAQ accordion.
+- CTA sections.
+
+Keep business information, service content, reviews and image paths in maintainable data structures instead of scattering hardcoded details throughout the application.
+
+Implement proper loading, empty, error and success states.
+
+Do not use fake API responses to simulate a working booking or review system.
+
+Do not leave broken routes, dead buttons, empty sections, missing images, console errors or unfinished placeholder layouts.
+
+If a real integration cannot be configured, make the limitation explicit and provide a functional alternative where possible.
+
+# 15. QUALITY CONTROL BEFORE DELIVERY
+
+After building the site, inspect and test it as if presenting it to a real clinic owner.
+
+Verify:
+
+- All navigation links work.
+- All pages render correctly.
+- Contact details are consistent.
+- Telephone buttons work.
+- Directions point to the correct clinic.
+- Review quotations match their sources.
+- Images load correctly.
+- No unauthorized patient images are displayed.
+- No fake credentials or unsupported claims appear.
+- Forms validate correctly.
+- Form submission feedback is truthful.
+- Mobile layouts do not overflow.
+- Desktop and mobile menus work.
+- Animations respect reduced-motion preferences.
+- Images are optimized.
+- Accessibility issues are addressed.
+- Metadata and structured data are valid.
+- No unnecessary console errors remain.
+
+Review the website at desktop, tablet and mobile widths. Fix visual defects rather than merely listing them.
+
+The result should be visually polished, consistent, responsive and ready for a client presentation, with any production dependencies clearly documented.
+
+# 16. FINAL DELIVERABLE
+
+Complete the actual website implementation.
+
+Provide:
+
+1. A working website preview.
+2. All implemented pages and reusable components.
+3. The final visual system and responsive layouts.
+4. An inventory of authentic images used and any images still needed from the clinic.
+5. Sources for verified business facts and published review excerpts.
+6. A list of any unresolved details requiring clinic-owner confirmation.
+7. Instructions for configuring the appointment form, domain and deployment.
+8. A concise summary of the completed tests and any remaining limitations.
+
+Do not stop after writing the research report or presenting a design mockup.
+
+Do not ask me to manually supply information that can reasonably be researched from public sources. Research first, implement what can be verified, and use clearly documented editable placeholders only for information that is genuinely unavailable.
+
+FINAL QUALITY STANDARD:
+
+The finished website must look like a real, professionally commissioned dental clinic website: authentic photography, recognizable branding, a genuine dentist profile, trustworthy reviews, carefully considered typography, elegant spacing, subtle animation, excellent mobile usability and straightforward appointment access.
+
+Authenticity comes before decoration. Accuracy comes before marketing claims. Functionality comes before visual gimmicks.
+
+Build the best complete website supported by the available verified information and authorized assets.

@@ -1,0 +1,6 @@
+{
+  "name": "HR Sukhia Dental Clinic — Orthodontics & Dentistry in Saddar, Karachi",
+  "description": "Official digital home of HR Sukhia Dental Clinic (Dr. H.R. Sukhia Dental Surgery & Orthodontics) at 101 Abdullah Haroon Road, Saddar, Karachi. Led by Prof. Dr. H.R. Sukhia (BDS, MS, FDSRCPS Glasgow, FFD Orth RCSI, MOrth RCS Edinburgh).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#10263C"/>
+  <path
+    d="M32 5L53 13V30C53 44.5 43.8 54.4 32 59C20.2 54.4 11 44.5 11 30V13L32 5Z"
+    stroke="#167D83"
+    stroke-width="2"
+    fill="#16324F"
+  />
+  <path
+    d="M22.5 21C19 21 17 24.2 17.6 28.5C18.1 32.2 19.8 35.4 20.5 39.5C21.1 43 22.3 46 24.4 46C26.2 46 27.1 42.3 28.5 39.8C29.4 38.2 30.6 37.5 32 37.5C33.4 37.5 34.6 38.2 35.5 39.8C36.9 42.3 37.8 46 39.6 46C41.7 46 42.9 43 43.5 39.5C44.2 35.4 45.9 32.2 46.4 28.5C47 24.2 45 21 41.5 21C38.4 21 35.8 23.2 32 23.2C28.2 23.2 25.6 21 22.5 21Z"
+    stroke="#EAF5F4"
+    stroke-width="2.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="#167D83"
+    fill-opacity="0.3"
+  />
+  <path
+    d="M15 30.5C20.5 34.2 26.2 35.8 32 35.8C37.8 35.8 43.5 34.2 49 30.5"
+    stroke="#38BDF8"
+    stroke-width="2.2"
+    stroke-linecap="round"
+  />
+  <rect x="21.5" y="31.2" width="3.6" height="3.6" rx="0.8" fill="#FFFFFF"/>
+  <rect x="30" y="33.5" width="4" height="4" rx="1" fill="#38BDF8"/>
+  <rect x="38.9" y="31.2" width="3.6" height="3.6" rx="0.8" fill="#FFFFFF"/>
+  <text x="32" y="17.5" text-anchor="middle" fill="#EAF5F4" font-family="Georgia, serif" font-weight="700" font-size="7.5" letter-spacing="1.2">HRS</text>
+</svg>

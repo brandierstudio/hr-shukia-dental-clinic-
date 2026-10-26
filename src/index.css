@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif-signage: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html {
+    font-family: var(--font-body);
+    color: #172B3A;
+    background-color: #F8FAFC;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  .font-signage {
+    font-family: var(--font-serif-signage);
+  }
+
+  .font-mono-tabular {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Subtle photographic enhancement for authentic phone-captured clinic photographs */
+.clinic-photo-enhanced {
+  filter: contrast(1.06) brightness(1.04) saturate(1.05);
+}
+
+/* Slow, refined Ken Burns backdrop motion for the full-bleed hero image */
+@keyframes heroBackdropZoom {
+  0% {
+    transform: scale(1.02);
+  }
+  50% {
+    transform: scale(1.07);
+  }
+  100% {
+    transform: scale(1.02);
+  }
+}
+
+.animate-hero-backdrop {
+  animation: heroBackdropZoom 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Tactile animated primary button with subtle diagonal sheen sweep */
+.btn-animated-primary {
+  position: relative;
+  overflow: hidden;
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 180ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-animated-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 450ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.btn-animated-primary:hover::after {
+  left: 140%;
+}
+
+.btn-animated-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-animated-primary:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+/* Animated gradient text highlight for hero display accent */
+@keyframes textGradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.hero-animated-accent {
+  background: linear-gradient(90deg, #EAF5F4 0%, #5EEAD4 45%, #7DD3FC 80%, #EAF5F4 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: textGradientShift 6s ease-in-out infinite;
+}
+
+/* Staggered hardware-accelerated entrance animations */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeSlideUp 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-up-d1 {
+  animation: fadeSlideUp 650ms cubic-bezier(0.16, 1, 0.3, 1) 90ms both;
+}
+
+.animate-fade-up-d2 {
+  animation: fadeSlideUp 650ms cubic-bezier(0.16, 1, 0.3, 1) 180ms both;
+}
+
+.animate-fade-up-d3 {
+  animation: fadeSlideUp 650ms cubic-bezier(0.16, 1, 0.3, 1) 270ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

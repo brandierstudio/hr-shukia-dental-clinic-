@@ -1,0 +1,16 @@
+[
+  {
+    "id": "enq-1792993238694",
+    "referenceCode": "HRS-93238-0353",
+    "patientName": "Zainab Siddiqui",
+    "phone": "0333 3770353",
+    "formattedPhone": "0333 3770353",
+    "preferredDate": "2026-11-02",
+    "preferredTimeSlot": "3:00 PM – 4:30 PM",
+    "serviceInterest": "Orthodontics & Fixed Braces",
+    "contactMethod": "Phone Call",
+    "message": "",
+    "createdAt": "2026-10-26T05:40:38.694Z",
+    "status": "Logged — Pending Clinic Phone Confirmation"
+  }
+]
