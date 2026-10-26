@@ -35,10 +35,10 @@ export const FAQAccordion: React.FC<{
               key={cat}
               type="button"
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
+              className={`px-4 py-1.5 text-xs font-bold rounded-full transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                 selectedCategory === cat
-                  ? 'bg-[#16324F] text-white'
-                  : 'bg-white border border-[#E4EAF0] text-[#667582] hover:text-[#172B3A]'
+                  ? 'btn-animated-primary text-white'
+                  : 'liquid-glass-pill text-[#335268] hover:text-[#0F293A]'
               }`}
             >
               {cat}
@@ -47,7 +47,7 @@ export const FAQAccordion: React.FC<{
         </div>
       )}
 
-      <div className="divide-y divide-[#E4EAF0] border border-[#E4EAF0] rounded-xl bg-white overflow-hidden">
+      <div className="divide-y divide-teal-900/10 rounded-3xl liquid-glass-panel overflow-hidden">
         {displayedItems.map((faq) => {
           const isOpen = openId === faq.id;
           return (
@@ -60,22 +60,22 @@ export const FAQAccordion: React.FC<{
                   className="w-full flex items-start justify-between gap-4 text-left cursor-pointer group"
                 >
                   <div>
-                    <span className="text-xs text-[#167D83] font-medium block mb-1">
+                    <span className="text-xs text-[#0D9488] font-bold block mb-1">
                       {faq.category}
                     </span>
-                    <span className="text-sm md:text-base font-bold text-[#16324F] group-hover:text-[#167D83] transition-colors">
+                    <span className="text-sm md:text-base font-extrabold text-[#0F293A] group-hover:text-[#0D9488] transition-colors">
                       {faq.question}
                     </span>
                   </div>
                   <ChevronDown
-                    className={`w-5 h-5 text-[#667582] shrink-0 mt-1 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 text-[#167D83]' : ''
+                    className={`w-5 h-5 text-[#47657A] shrink-0 mt-1 transition-transform duration-300 ${
+                      isOpen ? 'rotate-180 text-[#0D9488]' : ''
                     }`}
                   />
                 </button>
               </h3>
               {isOpen && (
-                <div className="mt-3 text-sm text-[#667582] leading-relaxed pr-6">
+                <div className="mt-3 text-sm text-[#335268] leading-relaxed pr-6">
                   {faq.answer}
                 </div>
               )}

@@ -24,7 +24,11 @@ import {
   ServiceItem,
   TRANSPARENCY_DOCUMENTATION,
 } from '../data/clinicData';
-import { ResilientClinicImage, GalleryLightbox } from './GalleryLightbox';
+import {
+  ResilientClinicImage,
+  DrSukhiaPortrait,
+  GalleryLightbox,
+} from './GalleryLightbox';
 import { AppointmentEnquiryForm } from './AppointmentEnquiryForm';
 import { ReviewsSection } from './ReviewsSection';
 import { ClinicMap } from './ClinicMap';
@@ -48,35 +52,42 @@ interface NavigationProps {
 export const AboutDentistPage: React.FC<NavigationProps> = ({ onNavigate }) => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-16">
-      {/* Hero Header */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
-        <div className="lg:col-span-7 flex flex-col justify-between bg-white rounded-xl border border-[#E4EAF0] p-7 md:p-10">
+      {/* Hero Header with Full Portrait of Dr. Sukhia */}
+      <div className="liquid-glass-panel rounded-3xl p-7 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="lg:col-span-5 flex flex-col items-center">
+          <DrSukhiaPortrait className="max-w-[350px]" />
+        </div>
+
+        <div className="lg:col-span-7 flex flex-col justify-between">
           <div>
-            <div className="flex flex-wrap items-center gap-2 text-xs text-[#167D83] font-semibold">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-[#0D9488] font-bold uppercase tracking-wider">
               <span>Verified Academic &amp; Clinical Profile</span>
               <span aria-hidden="true">·</span>
               <span>Saddar, Karachi</span>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-[#16324F] mt-3">
+            <h1 className="text-3xl md:text-4xl font-extrabold text-[#0F293A] mt-3">
               {DENTIST_PROFILE.fullName}
             </h1>
-            <p className="text-sm font-medium text-[#667582] mt-1">
+            <p className="text-sm font-semibold text-[#335268] mt-1">
               {DENTIST_PROFILE.fullExpandedName} — {DENTIST_PROFILE.primaryTitle}
             </p>
-            <p className="text-xs font-mono-tabular text-[#167D83] mt-2">
+            <p className="text-xs font-mono-tabular font-bold text-[#0D9488] mt-2">
               {DENTIST_PROFILE.qualificationsString}
             </p>
-            <p className="text-base text-[#172B3A] mt-5 leading-relaxed">
+            <p className="text-base text-[#2C4A5E] mt-5 leading-relaxed">
               {DENTIST_PROFILE.shortBio}
             </p>
 
-            <div className="mt-6 pt-6 border-t border-[#E4EAF0] grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="mt-6 pt-6 border-t border-teal-900/10 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {DENTIST_PROFILE.credentialsList.map((cred) => (
-                <div key={cred.code} className="p-3.5 rounded-lg bg-[#F8FAFC] border border-[#E4EAF0]">
-                  <p className="text-xs font-mono-tabular font-bold text-[#16324F]">
+                <div
+                  key={cred.code}
+                  className="p-3.5 rounded-2xl liquid-glass-card"
+                >
+                  <p className="text-xs font-mono-tabular font-extrabold text-[#0F293A]">
                     {cred.code}
                   </p>
-                  <p className="text-xs text-[#172B3A] mt-1 leading-snug">
+                  <p className="text-xs text-[#335268] mt-1 leading-snug">
                     {cred.institution}
                   </p>
                 </div>
@@ -84,48 +95,21 @@ export const AboutDentistPage: React.FC<NavigationProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-[#E4EAF0] flex flex-wrap items-center gap-3">
+          <div className="mt-8 pt-6 border-t border-teal-900/10 flex flex-wrap items-center gap-3.5">
             <button
               type="button"
               onClick={() => onNavigate({ page: 'contact' })}
-              className="px-5 py-2.5 rounded-lg bg-[#16324F] text-white text-xs font-semibold hover:bg-[#167D83] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="btn-animated-primary px-6 py-3 rounded-full text-white text-xs font-bold whitespace-nowrap shrink-0 cursor-pointer"
             >
               Book Consultation with Dr. Sukhia
             </button>
             <a
               href={CLINIC_INFO.phoneTelHref}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#E4EAF0] bg-white text-[#16324F] text-xs font-semibold hover:border-[#167D83] transition-colors whitespace-nowrap shrink-0"
+              className="btn-liquid-secondary inline-flex items-center gap-2 px-5 py-3 rounded-full text-[#0F293A] text-xs font-bold whitespace-nowrap shrink-0"
             >
-              <Phone className="w-4 h-4 text-[#167D83]" />
+              <Phone className="w-4 h-4 text-[#0D9488]" />
               Call {CLINIC_INFO.phoneNational}
             </a>
-          </div>
-        </div>
-
-        <div className="lg:col-span-5 flex flex-col justify-between bg-white rounded-xl border border-[#E4EAF0] overflow-hidden">
-          <div className="h-72 lg:h-80 w-full relative overflow-hidden">
-            <ResilientClinicImage
-              src="/assets/clinic/treatment-operatory-wide.jpg"
-              alt="Clinical operatory of Prof. Dr. H.R. Sukhia showing framed Royal College diplomas and dental units"
-              loading="eager"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="p-6 bg-[#F8FAFC] border-t border-[#E4EAF0] flex-1 flex flex-col justify-between">
-            <div>
-              <p className="text-xs font-semibold text-[#167D83]">
-                Authentic Clinic Operatory &amp; Royal College Diplomas
-              </p>
-              <h2 className="text-base font-bold text-[#16324F] mt-1">
-                Dr. H.R. Sukhia Dental Surgery &amp; Orthodontics
-              </h2>
-              <p className="text-xs text-[#667582] mt-2 leading-relaxed">
-                Pictured above is the actual clinical operatory at 101 Abdullah Haroon Road, Saddar, displaying framed Royal College fellowship diplomas on the left wall alongside the dual orthodontic treatment chairs.
-              </p>
-            </div>
-            <div className="mt-4 pt-3 border-t border-[#E4EAF0] text-xs text-[#667582]">
-              <span>Portrait Integrity Note: We never substitute stock model photos or AI portraits for Prof. Dr. H.R. Sukhia.</span>
-            </div>
           </div>
         </div>
       </div>

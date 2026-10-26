@@ -28,9 +28,9 @@ export const ResilientClinicImage: React.FC<{
   if (failed) {
     return (
       <div
-        className={`bg-gradient-to-br from-[#16324F] to-[#167D83] text-white flex flex-col items-center justify-center p-6 text-center ${className}`}
+        className={`bg-gradient-to-br from-[#CCFBF1] to-[#E0F2FE] text-[#0F293A] flex flex-col items-center justify-center p-6 text-center ${className}`}
       >
-        <Camera className="w-8 h-8 opacity-80 mb-2" />
+        <Camera className="w-8 h-8 text-[#0D9488] mb-2" />
         <p className="text-xs font-medium max-w-xs leading-relaxed">{alt}</p>
       </div>
     );
@@ -45,6 +45,29 @@ export const ResilientClinicImage: React.FC<{
       onError={() => setFailed(true)}
       className={`clinic-photo-enhanced ${className}`}
     />
+  );
+};
+
+/**
+ * Dedicated full-portrait renderer for Prof. Dr. H.R. Sukhia's portrait
+ * (/assets/clinic/dr-sukhia-portrait.jpg, 1376x3058).
+ * Displays 100% of the vertical portrait (top to bottom of white lab coat, 0..2630px)
+ * while clipping off the bottom black area (2630..3058px) with zero distortion.
+ */
+export const DrSukhiaPortrait: React.FC<{
+  className?: string;
+}> = ({ className = '' }) => {
+  return (
+    <div
+      className={`relative w-full overflow-hidden rounded-2xl bg-[#E8F4F8] border border-white/90 shadow-lg ${className}`}
+    >
+      <img
+        src="/assets/clinic/dr-sukhia-portrait-clean.png"
+        alt="Prof. Dr. H.R. Sukhia — Principal Orthodontist & Dental Surgeon"
+        loading="eager"
+        className="w-full h-auto block hero-photo-vivid transition-transform duration-700 hover:scale-[1.02]"
+      />
+    </div>
   );
 };
 
@@ -89,24 +112,19 @@ export const GalleryLightbox: React.FC<{ showHeader?: boolean }> = ({
     <div>
       {showHeader && (
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-2 text-xs text-[#167D83] font-semibold">
-              <span>Authentic Clinic Photography</span>
-              <span aria-hidden="true">·</span>
-              <span>101 Abdullah Haroon Road, Saddar</span>
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#16324F] mt-2">
+          <div className="max-w-xl">
+            <span className="text-xs text-[#0D9488] font-bold uppercase tracking-wider">
+              Real Clinic Photography
+            </span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0F293A] mt-1">
               Inside HR Sukhia Dental Clinic
             </h2>
-            <p className="text-sm md:text-base text-[#667582] mt-2 leading-relaxed">
-              Every photograph below is an authentic image of the actual clinic in Saddar, Karachi—including the original brushed-metal entrance signage, the air-conditioned waiting area with its Orthodontics Problem Identification Chart, and the clinical operatories.
-            </p>
           </div>
 
           <div
             role="group"
             aria-label="Filter clinic gallery by room"
-            className="flex flex-wrap items-center gap-1.5 p-1 bg-[#EAF5F4] rounded-lg border border-[#E4EAF0]"
+            className="flex flex-wrap items-center gap-1.5 p-1.5 liquid-glass-pill rounded-full"
           >
             {CATEGORIES.map((category) => (
               <button
@@ -116,10 +134,10 @@ export const GalleryLightbox: React.FC<{ showHeader?: boolean }> = ({
                   setSelectedCategory(category);
                   setActiveLightboxIndex(null);
                 }}
-                className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
+                className={`px-3.5 py-1.5 text-xs font-bold rounded-full transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                   selectedCategory === category
-                    ? 'bg-[#16324F] text-white shadow-2xs'
-                    : 'text-[#172B3A] hover:text-[#167D83]'
+                    ? 'btn-animated-primary text-white'
+                    : 'text-[#335268] hover:text-[#0F293A]'
                 }`}
               >
                 {category}
@@ -133,7 +151,7 @@ export const GalleryLightbox: React.FC<{ showHeader?: boolean }> = ({
         <div
           role="group"
           aria-label="Filter clinic gallery by room"
-          className="flex flex-wrap items-center gap-1.5 p-1 bg-[#EAF5F4] rounded-lg border border-[#E4EAF0] mb-8 w-fit"
+          className="flex flex-wrap items-center gap-1.5 p-1.5 liquid-glass-pill rounded-full mb-8 w-fit"
         >
           {CATEGORIES.map((category) => (
             <button
@@ -143,10 +161,10 @@ export const GalleryLightbox: React.FC<{ showHeader?: boolean }> = ({
                 setSelectedCategory(category);
                 setActiveLightboxIndex(null);
               }}
-              className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
+              className={`px-3.5 py-1.5 text-xs font-bold rounded-full transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                 selectedCategory === category
-                  ? 'bg-[#16324F] text-white shadow-2xs'
-                  : 'text-[#172B3A] hover:text-[#167D83]'
+                  ? 'btn-animated-primary text-white'
+                  : 'text-[#335268] hover:text-[#0F293A]'
               }`}
             >
               {category}
@@ -159,76 +177,58 @@ export const GalleryLightbox: React.FC<{ showHeader?: boolean }> = ({
         {filteredItems.map((item, idx) => (
           <article
             key={item.id}
-            className="group bg-white rounded-xl border border-[#E4EAF0] overflow-hidden flex flex-col justify-between transition-colors hover:border-[#167D83]/50"
+            className="group liquid-glass-card card-3d-hover rounded-3xl overflow-hidden flex flex-col justify-between"
           >
             <div>
-              <div className="relative h-64 w-full overflow-hidden bg-[#16324F]/5">
+              <div className="relative h-60 w-full overflow-hidden">
                 <ResilientClinicImage
                   src={item.src}
                   alt={item.alt}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  className="w-full h-full object-cover hero-photo-vivid transition-transform duration-500 group-hover:scale-105"
                 />
                 <button
                   type="button"
                   onClick={() => setActiveLightboxIndex(idx)}
                   aria-label={`Inspect full photograph: ${item.title}`}
-                  className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#16324F]/90 text-white text-xs font-medium hover:bg-[#167D83] transition-colors cursor-pointer"
+                  className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full liquid-glass-pill text-[#0F293A] text-xs font-bold hover:scale-105 transition-transform cursor-pointer"
                 >
-                  <Expand className="w-3.5 h-3.5" />
-                  Inspect Photo
+                  <Expand className="w-3.5 h-3.5 text-[#0D9488]" />
+                  Inspect
                 </button>
               </div>
               <div className="p-5">
-                <div className="flex items-center gap-2 text-xs text-[#667582]">
-                  <span className="text-[#167D83] font-medium">{item.category}</span>
-                  <span aria-hidden="true">·</span>
-                  <span>Authentic Clinic Asset</span>
-                </div>
-                <h3 className="text-base font-bold text-[#16324F] mt-1.5">
+                <span className="text-xs text-[#0D9488] font-bold">
+                  {item.category}
+                </span>
+                <h3 className="text-base font-extrabold text-[#0F293A] mt-1">
                   {item.title}
                 </h3>
-                <p className="text-xs text-[#667582] mt-2 leading-relaxed">
-                  {item.caption}
-                </p>
               </div>
-            </div>
-
-            <div className="px-5 py-3 bg-[#F8FAFC] border-t border-[#E4EAF0] flex items-center justify-between gap-2 text-xs text-[#667582]">
-              <span className="truncate">{item.attribution}</span>
-              <a
-                href={item.sourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#167D83] font-medium hover:underline inline-flex items-center gap-1 shrink-0"
-              >
-                Source
-                <ExternalLink className="w-3 h-3" />
-              </a>
             </div>
           </article>
         ))}
       </div>
 
-      {/* Accessible Lightbox Modal */}
+      {/* Accessible Lightbox Modal (Liquid Glass) */}
       {activeItem && activeLightboxIndex !== null && (
         <div
           role="dialog"
           aria-modal="true"
           aria-label={activeItem.title}
           data-testid="gallery-lightbox-modal"
-          className="fixed inset-0 z-50 bg-[#16324F]/90 backdrop-blur-xs flex items-center justify-center p-4 md:p-8"
+          className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
           onClick={() => setActiveLightboxIndex(null)}
         >
           <div
-            className="bg-white rounded-xl max-w-4xl w-full overflow-hidden border border-[#E4EAF0] shadow-xl"
+            className="liquid-glass-panel rounded-3xl max-w-4xl w-full overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between gap-4 px-5 py-3.5 border-b border-[#E4EAF0]">
+            <div className="flex items-center justify-between gap-4 px-6 py-4 border-b border-teal-900/10">
               <div className="min-w-0">
-                <p className="text-xs text-[#167D83] font-semibold">
+                <p className="text-xs text-[#0D9488] font-bold">
                   {activeItem.category} · Photo {activeLightboxIndex + 1} of {filteredItems.length}
                 </p>
-                <h3 className="text-base font-bold text-[#16324F] truncate">
+                <h3 className="text-base font-extrabold text-[#0F293A] truncate">
                   {activeItem.title}
                 </h3>
               </div>
@@ -236,18 +236,18 @@ export const GalleryLightbox: React.FC<{ showHeader?: boolean }> = ({
                 type="button"
                 onClick={() => setActiveLightboxIndex(null)}
                 aria-label="Close photo lightbox"
-                className="p-2 rounded-lg text-[#667582] hover:text-[#16324F] hover:bg-[#F8FAFC] transition-colors cursor-pointer"
+                className="p-2 rounded-full liquid-glass-pill text-[#0F293A] cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="relative bg-[#0F2338] flex items-center justify-center max-h-[65vh] overflow-hidden">
+            <div className="relative bg-white/60 flex items-center justify-center max-h-[65vh] overflow-hidden p-2">
               <ResilientClinicImage
                 src={activeItem.src}
                 alt={activeItem.alt}
                 loading="eager"
-                className="max-h-[65vh] w-auto object-contain mx-auto"
+                className="max-h-[62vh] w-auto object-contain mx-auto rounded-2xl hero-photo-vivid"
               />
               {filteredItems.length > 1 && (
                 <>
@@ -260,7 +260,7 @@ export const GalleryLightbox: React.FC<{ showHeader?: boolean }> = ({
                       )
                     }
                     aria-label="Previous clinic photograph"
-                    className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-white/90 text-[#16324F] hover:bg-white transition-colors cursor-pointer"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full liquid-glass-pill text-[#0F293A] cursor-pointer"
                   >
                     <ChevronLeft className="w-5 h-5" />
                   </button>
@@ -272,7 +272,7 @@ export const GalleryLightbox: React.FC<{ showHeader?: boolean }> = ({
                       )
                     }
                     aria-label="Next clinic photograph"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-white/90 text-[#16324F] hover:bg-white transition-colors cursor-pointer"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full liquid-glass-pill text-[#0F293A] cursor-pointer"
                   >
                     <ChevronRight className="w-5 h-5" />
                   </button>
@@ -280,18 +280,18 @@ export const GalleryLightbox: React.FC<{ showHeader?: boolean }> = ({
               )}
             </div>
 
-            <div className="p-5 bg-[#F8FAFC] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <p className="text-xs md:text-sm text-[#172B3A] leading-relaxed max-w-2xl">
+            <div className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <p className="text-xs md:text-sm text-[#2C4A5E] leading-relaxed max-w-2xl">
                 {activeItem.caption}
               </p>
               <a
                 href={activeItem.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-[#E4EAF0] bg-white text-xs font-semibold text-[#16324F] hover:border-[#167D83] transition-colors whitespace-nowrap shrink-0"
+                className="btn-liquid-secondary inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold text-[#0F293A] whitespace-nowrap shrink-0"
               >
-                View Original on Google Maps
-                <ExternalLink className="w-3.5 h-3.5" />
+                Original on Google Maps
+                <ExternalLink className="w-3.5 h-3.5 text-[#0D9488]" />
               </a>
             </div>
           </div>

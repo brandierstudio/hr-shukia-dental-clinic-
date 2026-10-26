@@ -6,6 +6,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   ArrowRight,
+  Award,
   Calendar,
   ExternalLink,
   MapPin,
@@ -23,8 +24,16 @@ import {
   SERVICES_DATA,
 } from './data/clinicData';
 import { getClinicOpenStatus } from './utils/clinicLogic';
-import { ClinicBrandLogo } from './components/ClinicBrandLogo';
-import { ResilientClinicImage, GalleryLightbox } from './components/GalleryLightbox';
+import {
+  ClinicBrandLogo,
+  BrandierWebFooterBadge,
+} from './components/ClinicBrandLogo';
+import { ScrollReveal3D } from './components/ScrollReveal3D';
+import {
+  ResilientClinicImage,
+  DrSukhiaPortrait,
+  GalleryLightbox,
+} from './components/GalleryLightbox';
 import { ReviewsSection } from './components/ReviewsSection';
 import { ClinicMap } from './components/ClinicMap';
 import { AppointmentEnquiryForm } from './components/AppointmentEnquiryForm';
@@ -44,30 +53,21 @@ import {
 const HERO_BACKDROPS = [
   {
     id: 'operatory',
-    label: 'Operatory',
+    label: 'Operatory View',
     src: '/assets/clinic/treatment-operatory-wide.jpg',
-    alt: 'Main clinical operatory at HR Sukhia Dental Clinic showing dual dental units and framed Royal College fellowship diplomas',
-    captionTitle: 'Main Clinical Operatory · 101 Abdullah Haroon Road',
-    captionText:
-      'Dual orthodontic treatment chairs, patient case archives, and Prof. Dr. H.R. Sukhia’s framed Royal College fellowship diplomas (Glasgow, Ireland & Edinburgh).',
+    alt: 'Main clinical operatory at HR Sukhia Dental Clinic in Saddar, Karachi',
   },
   {
     id: 'lounge',
     label: 'Waiting Lounge',
     src: '/assets/clinic/waiting-lounge-chart.jpg',
-    alt: 'Air-conditioned patient waiting lounge and Orthodontic Problem Identification Chart at HR Sukhia Dental Clinic',
-    captionTitle: 'Patient Waiting Lounge · Orthodontic Diagnostic Chart',
-    captionText:
-      'Air-conditioned waiting room featuring the clinic’s in-house Orthodontic Problem Identification Chart for fixed braces consultations.',
+    alt: 'Patient waiting lounge at HR Sukhia Dental Clinic',
   },
   {
-    id: 'entrance',
-    label: 'Entrance',
-    src: '/assets/clinic/entrance-signage.jpg',
-    alt: 'Original metallic signboard of Dr. H.R. Sukhia Dental Surgery & Orthodontics at 1st Floor, 101 Abdullah Haroon Road, Saddar',
-    captionTitle: '1st Floor Entrance · Near Gulzar Building, Saddar',
-    captionText:
-      'Original clinic signage reading “Dr. H.R. Sukhia Dental Surgery & Orthodontics” and the verified priority-appointment door notice.',
+    id: 'bay',
+    label: 'Treatment Bay',
+    src: '/assets/clinic/treatment-bay-window.jpg',
+    alt: 'Bright dental treatment bay at HR Sukhia Dental Clinic',
   },
 ] as const;
 
@@ -107,7 +107,6 @@ export default function App() {
     return () => window.removeEventListener('gmp-quota-exceeded', handleQuota);
   }, []);
 
-  // Tier 2: Check server-side Places API proxy for live rating/review count & quota status
   useEffect(() => {
     let active = true;
     fetch('/api/clinic-place')
@@ -161,7 +160,6 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Dynamic Document Title per Page for Local SEO
   useEffect(() => {
     if (route.page === 'home') {
       document.title =
@@ -201,7 +199,7 @@ export default function App() {
       : null;
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#172B3A] pb-14 md:pb-0">
+    <div className="min-h-screen flex flex-col liquid-glass-canvas text-[#0F293A] pb-14 md:pb-0">
       {/* Google Maps Platform Demo Key Quota Banner (Only shown if quota exceeded) */}
       {gmpQuotaExceeded && (
         <div className="bg-amber-50 border-b border-amber-200 text-amber-900 px-4 py-2.5 text-xs md:text-sm text-center sticky top-0 z-50 shadow-sm">
@@ -220,41 +218,41 @@ export default function App() {
         </div>
       )}
 
-      {/* SECTION 1 — TOP INFORMATION BAR (Desktop & Tablet) */}
-      <div className="hidden sm:block bg-[#10253B] text-white/90 border-b border-white/10 text-xs">
+      {/* SECTION 1 — LUMINOUS LIQUID GLASS TOP BAR (No Dark Colors) */}
+      <div className="hidden sm:block bg-white/75 backdrop-blur-md border-b border-white/90 text-xs text-[#335268]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between gap-4">
           <div className="flex items-center gap-2 truncate">
-            <span className="font-medium text-white">
+            <MapPin className="w-3.5 h-3.5 text-[#0D9488] shrink-0" />
+            <span className="font-semibold text-[#0F293A]">
               1st Floor, 101 Abdullah Haroon Road, Saddar, Karachi
             </span>
-            <span aria-hidden="true" className="text-white/40">
+            <span aria-hidden="true" className="text-[#94A3B8]">
               ·
             </span>
-            <span className="text-white/80">{clinicStatus.statusLabel}</span>
+            <span className="text-[#0D9488] font-medium">
+              {clinicStatus.statusLabel}
+            </span>
           </div>
 
           <div className="flex items-center gap-4 shrink-0">
-            <span className="text-white/80 hidden lg:inline">
+            <span className="text-[#47657A] hidden lg:inline">
               Mon–Fri 3:00–7:00 PM · Sat 2:00–7:00 PM
-            </span>
-            <span aria-hidden="true" className="text-white/40 hidden lg:inline">
-              ·
             </span>
             <a
               href={CLINIC_INFO.phoneTelHref}
-              className="font-mono-tabular font-semibold text-[#EAF5F4] hover:text-white inline-flex items-center gap-1.5 whitespace-nowrap shrink-0"
+              className="font-mono-tabular font-bold text-[#0D9488] hover:text-[#0284C7] inline-flex items-center gap-1.5 whitespace-nowrap shrink-0 transition-colors"
             >
-              <Phone className="w-3.5 h-3.5 text-[#38BDF8]" />
+              <Phone className="w-3.5 h-3.5" />
               {CLINIC_INFO.phoneInternational}
             </a>
           </div>
         </div>
       </div>
 
-      {/* SECTION 2 — PREMIUM NAVIGATION (Strict 3-Zone Top Bar Contract with Custom Brand Logo) */}
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-xs border-b border-[#E4EAF0]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-6">
-          {/* Zone 1: Custom SVG Dental & Orthodontic Crest + Brand Wordmark */}
+      {/* SECTION 2 — LIQUID GLASS NAVIGATION BAR WITH TRANSPARENT-BG LOGO */}
+      <header className="sticky top-0 z-40 liquid-glass-nav">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-17 flex items-center justify-between gap-6">
+          {/* Zone 1: Redesigned Transparent-Background 3D Dental Logo */}
           <a
             href="/?page=home"
             onClick={(e) => {
@@ -262,111 +260,58 @@ export default function App() {
               navigateTo({ page: 'home' });
             }}
             aria-label="HR Sukhia Dental Clinic — Home"
-            className="shrink-0"
+            className="shrink-0 bg-transparent"
           >
-            <ClinicBrandLogo variant="dark-text" size="md" showSubtitle={false} />
+            <ClinicBrandLogo size="md" showSubtitle={false} />
           </a>
 
-          {/* Zone 2: Concise single-line navigation links */}
+          {/* Zone 2: Clean Single-Line Navigation Links */}
           <nav
             aria-label="Primary Navigation"
-            className="hidden md:flex items-center gap-6 text-sm font-medium text-[#667582]"
+            className="hidden md:flex items-center gap-6 text-sm font-semibold text-[#335268]"
           >
-            <a
-              href="/?page=home"
-              onClick={(e) => {
-                e.preventDefault();
-                navigateTo({ page: 'home' });
-              }}
-              className={`hover:text-[#16324F] transition-colors whitespace-nowrap shrink-0 ${
-                route.page === 'home'
-                  ? 'text-[#16324F] font-semibold underline underline-offset-8 decoration-[#167D83] decoration-2'
-                  : ''
-              }`}
-            >
-              Home
-            </a>
-            <a
-              href="/?page=about"
-              onClick={(e) => {
-                e.preventDefault();
-                navigateTo({ page: 'about' });
-              }}
-              className={`hover:text-[#16324F] transition-colors whitespace-nowrap shrink-0 ${
-                route.page === 'about'
-                  ? 'text-[#16324F] font-semibold underline underline-offset-8 decoration-[#167D83] decoration-2'
-                  : ''
-              }`}
-            >
-              About Dentist
-            </a>
-            <a
-              href="/?page=services"
-              onClick={(e) => {
-                e.preventDefault();
-                navigateTo({ page: 'services' });
-              }}
-              className={`hover:text-[#16324F] transition-colors whitespace-nowrap shrink-0 ${
-                route.page === 'services' || route.page === 'service'
-                  ? 'text-[#16324F] font-semibold underline underline-offset-8 decoration-[#167D83] decoration-2'
-                  : ''
-              }`}
-            >
-              Services
-            </a>
-            <a
-              href="/?page=reviews"
-              onClick={(e) => {
-                e.preventDefault();
-                navigateTo({ page: 'reviews' });
-              }}
-              className={`hover:text-[#16324F] transition-colors whitespace-nowrap shrink-0 ${
-                route.page === 'reviews'
-                  ? 'text-[#16324F] font-semibold underline underline-offset-8 decoration-[#167D83] decoration-2'
-                  : ''
-              }`}
-            >
-              Reviews
-            </a>
-            <a
-              href="/?page=gallery"
-              onClick={(e) => {
-                e.preventDefault();
-                navigateTo({ page: 'gallery' });
-              }}
-              className={`hover:text-[#16324F] transition-colors whitespace-nowrap shrink-0 ${
-                route.page === 'gallery'
-                  ? 'text-[#16324F] font-semibold underline underline-offset-8 decoration-[#167D83] decoration-2'
-                  : ''
-              }`}
-            >
-              Gallery
-            </a>
-            <a
-              href="/?page=contact"
-              onClick={(e) => {
-                e.preventDefault();
-                navigateTo({ page: 'contact' });
-              }}
-              className={`hover:text-[#16324F] transition-colors whitespace-nowrap shrink-0 ${
-                route.page === 'contact'
-                  ? 'text-[#16324F] font-semibold underline underline-offset-8 decoration-[#167D83] decoration-2'
-                  : ''
-              }`}
-            >
-              Contact
-            </a>
+            {(
+              [
+                { label: 'Home', page: 'home' },
+                { label: 'About Dentist', page: 'about' },
+                { label: 'Services', page: 'services' },
+                { label: 'Reviews', page: 'reviews' },
+                { label: 'Gallery', page: 'gallery' },
+                { label: 'Contact', page: 'contact' },
+              ] as const
+            ).map((item) => {
+              const isActive =
+                route.page === item.page ||
+                (item.page === 'services' && route.page === 'service');
+              return (
+                <a
+                  key={item.page}
+                  href={`/?page=${item.page}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo({ page: item.page });
+                  }}
+                  className={`transition-all whitespace-nowrap shrink-0 ${
+                    isActive
+                      ? 'text-[#0D9488] font-bold underline underline-offset-8 decoration-[#0D9488] decoration-2'
+                      : 'hover:text-[#0D9488]'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </nav>
 
-          {/* Zone 3: 1 primary animated action + Mobile Hamburger */}
+          {/* Zone 3: Animated Liquid Primary Button + Mobile Menu Button */}
           <div className="flex items-center gap-3 shrink-0">
             <button
               type="button"
               onClick={() => navigateTo({ page: 'contact' })}
-              className="btn-animated-primary hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-[#16324F] rounded-lg hover:bg-[#167D83] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="btn-animated-primary group hidden sm:inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold text-white rounded-full whitespace-nowrap shrink-0 cursor-pointer"
             >
-              <span>Book an Appointment</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <span>Book Appointment</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
 
             <button
@@ -374,29 +319,28 @@ export default function App() {
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-              className="md:hidden p-2 rounded-lg text-[#16324F] hover:bg-[#F8FAFC] border border-[#E4EAF0] cursor-pointer"
+              className="md:hidden p-2 rounded-xl text-[#0F293A] liquid-glass-pill cursor-pointer"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Accessible Collapsible Menu */}
+        {/* Mobile Accessible Collapsible Liquid Glass Drawer */}
         {mobileMenuOpen && (
           <div
             data-testid="mobile-nav-drawer"
-            className="md:hidden bg-white border-b border-[#E4EAF0] px-4 pt-3 pb-5 space-y-3"
+            className="md:hidden liquid-glass-panel mx-3 my-2 rounded-2xl px-4 pt-3 pb-5 space-y-3"
           >
-            <div className="pb-2 border-b border-[#E4EAF0] text-xs text-[#667582]">
-              <ClinicBrandLogo variant="dark-text" size="sm" showSubtitle={true} />
-              <p className="mt-1.5">{CLINIC_INFO.address.fullFormatted}</p>
+            <div className="pb-2 border-b border-teal-900/10 text-xs text-[#335268]">
+              <ClinicBrandLogo size="sm" showSubtitle={true} />
             </div>
             <div className="grid grid-cols-2 gap-2">
               {(
                 [
                   { label: 'Home', target: { page: 'home' } },
-                  { label: 'About the Dentist', target: { page: 'about' } },
-                  { label: 'Dental Services', target: { page: 'services' } },
+                  { label: 'About Dentist', target: { page: 'about' } },
+                  { label: 'Services', target: { page: 'services' } },
                   { label: 'Patient Reviews', target: { page: 'reviews' } },
                   { label: 'Clinic Gallery', target: { page: 'gallery' } },
                   { label: 'FAQ', target: { page: 'faq' } },
@@ -408,10 +352,10 @@ export default function App() {
                   key={item.label}
                   type="button"
                   onClick={() => navigateTo(item.target)}
-                  className={`text-left px-3 py-2.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
+                  className={`text-left px-3 py-2.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
                     route.page === item.target.page
-                      ? 'bg-[#EAF5F4] text-[#16324F]'
-                      : 'text-[#172B3A] hover:bg-[#F8FAFC]'
+                      ? 'bg-[#CCFBF1]/80 text-[#0F293A]'
+                      : 'text-[#335268] hover:bg-white/70'
                   }`}
                 >
                   {item.label}
@@ -421,7 +365,7 @@ export default function App() {
             <div className="pt-2 flex items-center gap-2">
               <a
                 href={CLINIC_INFO.phoneTelHref}
-                className="btn-animated-primary flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg bg-[#16324F] text-white text-xs font-semibold"
+                className="btn-animated-primary flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-full text-white text-xs font-bold"
               >
                 <Phone className="w-3.5 h-3.5" />
                 Call {CLINIC_INFO.phoneNational}
@@ -430,9 +374,9 @@ export default function App() {
                 href={CLINIC_INFO.directionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-lg border border-[#E4EAF0] bg-[#F8FAFC] text-[#16324F] text-xs font-semibold"
+                className="btn-liquid-secondary flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-full text-[#0F293A] text-xs font-bold"
               >
-                <Navigation className="w-3.5 h-3.5 text-[#167D83]" />
+                <Navigation className="w-3.5 h-3.5 text-[#0D9488]" />
                 Directions
               </a>
             </div>
@@ -455,323 +399,264 @@ export default function App() {
 
         {route.page === 'home' && (
           <div>
-            {/* SECTION 3 — FULL-BLEED BACKGROUND IMAGE HERO WITH ANIMATED TYPOGRAPHY & BUTTONS */}
-            <section className="relative overflow-hidden bg-[#0A1E32] text-white border-b border-[#1E3A54]">
-              {/* Full-Bleed Edge-to-Edge Main Background Photograph covering the entire Hero */}
-              <div className="absolute inset-0 z-0 overflow-hidden">
+            {/* SECTION 3 — BRIGHT FULL-VISIBILITY HERO + LIQUID GLASS FLOATING ARCHITECTURE */}
+            <section className="relative min-h-[620px] lg:min-h-[680px] flex items-center overflow-hidden border-b border-white/80">
+              {/* 100% Bright, Full-Opacity, Unobstructed Main Background Photograph (ZERO dark/black overlay) */}
+              <div className="absolute inset-0 z-0 overflow-hidden bg-[#E6F4F7]">
                 <img
                   key={activeBackdrop.src}
                   src={activeBackdrop.src}
                   alt={activeBackdrop.alt}
                   loading="eager"
-                  className="w-full h-full object-cover object-center animate-hero-backdrop clinic-photo-enhanced opacity-80"
+                  className="w-full h-full object-cover object-center animate-hero-backdrop hero-photo-vivid"
                 />
-                {/* Multi-layer high-contrast clinical scrims for guaranteed text legibility */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#071524]/92 via-[#0A1F33]/78 to-[#0D2740]/45" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#071524]/92 via-transparent to-[#071524]/50" />
+                {/* Soft sunlit pearl mist ONLY at the very bottom edge to blend smoothly into the page */}
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#F2F9FB] to-transparent pointer-events-none" />
               </div>
 
-              <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                  {/* Left Column: Staggered Animated Copy & Interactive CTAs */}
-                  <div className="lg:col-span-7 flex flex-col justify-between">
-                    <div>
-                      <div className="animate-fade-up flex flex-wrap items-center gap-2 text-xs text-[#9AD6D3]">
-                        <span className="font-signage text-base md:text-lg font-bold text-white tracking-wide">
-                          {CLINIC_INFO.signageName}
-                        </span>
-                        <span aria-hidden="true" className="text-white/40">
-                          ·
-                        </span>
-                        <span className="text-white/85">
-                          101 Abdullah Haroon Road, Saddar, Karachi
-                        </span>
+              <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-18">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+                  {/* Left Floating Liquid Glass Hero Card (Concise, zero clutter) */}
+                  <div className="lg:col-span-7">
+                    <div className="liquid-glass-panel rounded-3xl p-7 sm:p-10 animate-fade-up">
+                      <div className="inline-flex items-center gap-2 text-xs font-bold tracking-wide uppercase text-[#0D9488]">
+                        <Sparkles className="w-4 h-4" />
+                        <span>Specialist Orthodontics · Saddar, Karachi</span>
                       </div>
 
-                      <h1 className="animate-fade-up-d1 text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mt-3.5 leading-[1.12]">
+                      <h1 className="animate-fade-up-d1 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F293A] tracking-tight mt-3 leading-[1.1]">
                         Thoughtful Dental Care.{' '}
                         <span className="hero-animated-accent block sm:inline">
                           Confident Smiles.
                         </span>
                       </h1>
 
-                      <p className="animate-fade-up-d2 text-base md:text-lg text-white/85 mt-4 leading-relaxed max-w-2xl">
-                        Specialist orthodontic care, fixed braces, and general dentistry in the heart of Saddar, Karachi—led by{' '}
-                        <strong className="text-white font-semibold">
+                      <p className="animate-fade-up-d2 text-base md:text-lg text-[#2C4A5E] mt-4 leading-relaxed">
+                        Precision fixed braces, bite alignment, and modern family dentistry led by{' '}
+                        <strong className="text-[#0F293A] font-bold">
                           Prof. Dr. H.R. Sukhia
                         </strong>{' '}
-                        (BDS, MS, FDSRCPS Glasgow, FFD Orth RCSI, MOrth RCS Edinburgh).
+                        (FDSRCPS Glasgow, FFD Orth RCSI, MOrth RCS Edinburgh).
                       </p>
 
-                      {/* Animated Action Buttons */}
-                      <div className="animate-fade-up-d3 mt-8 flex flex-wrap items-center gap-3.5">
+                      {/* Animated Liquid Buttons */}
+                      <div className="animate-fade-up-d3 mt-7 flex flex-wrap items-center gap-3.5">
                         <button
                           type="button"
                           onClick={() => navigateTo({ page: 'contact' })}
-                          className="btn-animated-primary group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-lg bg-[#167D83] text-white text-sm font-semibold hover:bg-[#199299] transition-all whitespace-nowrap shrink-0 cursor-pointer shadow-lg shadow-black/25"
+                          className="btn-animated-primary group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-white text-sm font-bold whitespace-nowrap shrink-0 cursor-pointer"
                         >
                           <Calendar className="w-4 h-4" />
-                          <span>Book an Appointment</span>
-                          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                          <span>Book Appointment</span>
+                          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
                         </button>
 
                         <button
                           type="button"
                           onClick={() => navigateTo({ page: 'services' })}
-                          className="group inline-flex items-center gap-2 px-5 py-3.5 rounded-lg border border-white/25 bg-white/10 backdrop-blur-xs text-white text-sm font-semibold hover:bg-white/20 hover:border-white/40 transition-all whitespace-nowrap shrink-0 cursor-pointer"
+                          className="btn-liquid-secondary group inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-[#0F293A] text-sm font-bold whitespace-nowrap shrink-0 cursor-pointer"
                         >
-                          <span>Explore Dental Services</span>
-                          <ArrowRight className="w-4 h-4 text-[#7CE2DC] transition-transform duration-300 group-hover:translate-x-1" />
+                          <span>Explore Services</span>
+                          <ArrowRight className="w-4 h-4 text-[#0D9488] transition-transform duration-300 group-hover:translate-x-1" />
                         </button>
 
                         <a
                           href={CLINIC_INFO.phoneTelHref}
-                          className="inline-flex items-center gap-2 px-4 py-3 text-sm font-mono-tabular font-semibold text-[#EAF5F4] hover:text-white transition-colors whitespace-nowrap shrink-0"
+                          className="btn-liquid-secondary inline-flex items-center gap-2 px-5 py-3.5 rounded-full text-sm font-mono-tabular font-bold text-[#0D9488] hover:text-[#0284C7] whitespace-nowrap shrink-0"
                         >
-                          <Phone className="w-4 h-4 text-[#38BDF8]" />
-                          {CLINIC_INFO.phoneInternational}
+                          <Phone className="w-4 h-4" />
+                          {CLINIC_INFO.phoneNational}
                         </a>
                       </div>
-                    </div>
 
-                    {/* Verified Rating & Location Bar inside Full-Bleed Hero */}
-                    <div className="animate-fade-up-d3 mt-9 pt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-4 text-xs text-white/80">
-                      <div className="flex items-center gap-2">
-                        <div className="flex items-center text-amber-400">
-                          {Array.from({ length: 5 }).map((_, idx) => (
-                            <Star key={idx} className="w-4 h-4 fill-amber-400" />
-                          ))}
+                      {/* Clean Rating & Address Strip */}
+                      <div className="mt-7 pt-5 border-t border-teal-900/10 flex flex-wrap items-center justify-between gap-4 text-xs text-[#335268]">
+                        <div className="flex items-center gap-2">
+                          <div className="flex items-center text-amber-500">
+                            {Array.from({ length: 5 }).map((_, idx) => (
+                              <Star key={idx} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                            ))}
+                          </div>
+                          <span className="font-mono-tabular font-bold text-[#0F293A]">
+                            {liveRating.score} / 5.0
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => navigateTo({ page: 'reviews' })}
+                            className="font-semibold text-[#0D9488] underline hover:text-[#0284C7] cursor-pointer"
+                          >
+                            ({liveRating.count} Google Reviews)
+                          </button>
                         </div>
-                        <span className="font-mono-tabular font-bold text-white">
-                          {liveRating.score} / 5.0
-                        </span>
-                        <span aria-hidden="true" className="text-white/40">
-                          ·
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => navigateTo({ page: 'reviews' })}
-                          className="underline text-[#9AD6D3] hover:text-white cursor-pointer"
-                        >
-                          {liveRating.count} Verified Google Reviews
-                        </button>
-                      </div>
 
-                      <div className="flex items-center gap-1.5 text-white/90">
-                        <MapPin className="w-3.5 h-3.5 text-[#38BDF8]" />
-                        <span>1st Floor, Near Gulzar Building, Saddar</span>
+                        <div className="flex items-center gap-1.5 font-semibold text-[#0F293A]">
+                          <MapPin className="w-3.5 h-3.5 text-[#0D9488]" />
+                          <span>101 Abdullah Haroon Rd, Saddar</span>
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Right Column: Custom Brand Crest Card & Interactive Hero Backdrop Switcher */}
-                  <div className="animate-fade-up-d2 lg:col-span-5 flex flex-col justify-between rounded-xl overflow-hidden border border-white/20 bg-[#0D2136]/85 backdrop-blur-md shadow-2xl">
-                    {/* Brand Emblem Header Strip */}
-                    <div className="px-4 py-3.5 border-b border-white/15 bg-[#102942]/90 flex items-center justify-between gap-3">
-                      <ClinicBrandLogo
-                        variant="light-text"
-                        size="sm"
-                        showSubtitle={true}
-                      />
-                      <span className="hidden sm:inline text-[11px] font-mono-tabular text-[#7CE2DC] shrink-0">
-                        Saddar, KHI
+                  {/* Right Side: Open & Unobstructed View of the Full-Bleed Photo + Floating Liquid Glass Scene Switcher */}
+                  <div className="lg:col-span-5 flex flex-col items-start lg:items-end justify-end gap-4">
+                    <div className="liquid-glass-pill rounded-2xl p-2 flex flex-wrap items-center gap-1.5">
+                      <span className="px-2.5 py-1 text-[11px] font-bold text-[#0F293A] inline-flex items-center gap-1">
+                        <Sparkles className="w-3.5 h-3.5 text-[#0D9488]" />
+                        <span>Clinic View:</span>
                       </span>
-                    </div>
-
-                    {/* Active Photograph Spotlight */}
-                    <div className="relative h-60 sm:h-72 w-full overflow-hidden">
-                      <ResilientClinicImage
-                        src={activeBackdrop.src}
-                        alt={activeBackdrop.alt}
-                        loading="eager"
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                      />
-                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#081726]/95 via-[#081726]/65 to-transparent p-4 text-white">
-                        <p className="text-xs font-semibold text-[#7CE2DC]">
-                          {activeBackdrop.captionTitle}
-                        </p>
-                        <p className="text-xs text-white/90 mt-0.5 leading-snug">
-                          {activeBackdrop.captionText}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Interactive Full-Hero Background Switcher Controls */}
-                    <div className="p-3 bg-[#0A1929]/95 border-t border-white/15 flex flex-wrap items-center justify-between gap-2">
-                      <span className="text-[11px] text-white/75 inline-flex items-center gap-1.5 shrink-0">
-                        <Sparkles className="w-3.5 h-3.5 text-[#38BDF8]" />
-                        <span>Hero Backdrop:</span>
-                      </span>
-                      <div className="flex flex-wrap items-center gap-1.5">
-                        {HERO_BACKDROPS.map((item, idx) => (
-                          <button
-                            key={item.id}
-                            type="button"
-                            onClick={() => setHeroBackdropIndex(idx)}
-                            className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
-                              heroBackdropIndex === idx
-                                ? 'bg-[#167D83] text-white shadow-xs'
-                                : 'bg-white/10 text-white/75 hover:bg-white/20 hover:text-white'
-                            }`}
-                          >
-                            {item.label}
-                          </button>
-                        ))}
-                      </div>
+                      {HERO_BACKDROPS.map((item, idx) => (
+                        <button
+                          key={item.id}
+                          type="button"
+                          onClick={() => setHeroBackdropIndex(idx)}
+                          className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
+                            heroBackdropIndex === idx
+                              ? 'btn-animated-primary text-white shadow-xs'
+                              : 'text-[#335268] hover:bg-white/80 hover:text-[#0F293A]'
+                          }`}
+                        >
+                          {item.label}
+                        </button>
+                      ))}
                     </div>
                   </div>
                 </div>
+              </div>
+            </section>
 
-                {/* SECTION 4 — TRUST INDICATORS (Full-width 4-column row inside Hero) */}
-                <div className="animate-fade-up-d3 mt-12 pt-8 border-t border-white/15 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                  <div className="p-4 rounded-xl bg-white/10 backdrop-blur-xs border border-white/15 hover:bg-white/15 transition-all duration-300 hover:-translate-y-0.5">
-                    <p className="text-xs text-white/75">Google Business Profile</p>
-                    <p className="text-lg font-bold font-mono-tabular text-white mt-1 inline-flex items-center gap-1.5">
-                      <span>{liveRating.score}</span>
-                      <Star className="w-4 h-4 fill-amber-400 text-amber-400 shrink-0" />
-                      <span>({liveRating.count} Reviews)</span>
+            {/* SECTION 4 — 3D LIQUID GLASS TRUST HIGHLIGHTS */}
+            <section className="py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 perspective-stage">
+              <ScrollReveal3D>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                  <div className="liquid-glass-card card-3d-hover rounded-2xl p-5">
+                    <p className="text-xs font-semibold text-[#0D9488]">
+                      Verified Patient Rating
                     </p>
-                    <p className="text-xs text-[#7CE2DC] mt-1">
-                      Verified Place ID: ChIJDyfERnI-sz4RXS_cF1qNraU
+                    <p className="text-2xl font-extrabold font-mono-tabular text-[#0F293A] mt-1 inline-flex items-center gap-1.5">
+                      <span>{liveRating.score}</span>
+                      <Star className="w-5 h-5 fill-amber-400 text-amber-400 shrink-0" />
+                      <span className="text-sm font-semibold text-[#47657A]">
+                        ({liveRating.count} Reviews)
+                      </span>
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-white/10 backdrop-blur-xs border border-white/15 hover:bg-white/15 transition-all duration-300 hover:-translate-y-0.5">
-                    <p className="text-xs text-white/75">Specialist Credentials</p>
-                    <p className="text-base font-bold text-white mt-1">
+                  <div className="liquid-glass-card card-3d-hover rounded-2xl p-5">
+                    <p className="text-xs font-semibold text-[#0D9488]">
+                      Royal College Fellowships
+                    </p>
+                    <p className="text-lg font-extrabold text-[#0F293A] mt-1">
                       FDSRCPS · FFD Orth · MOrth
                     </p>
-                    <p className="text-xs text-white/75 mt-1">
-                      Royal Colleges of Glasgow, Ireland &amp; Edinburgh
-                    </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-white/10 backdrop-blur-xs border border-white/15 hover:bg-white/15 transition-all duration-300 hover:-translate-y-0.5">
-                    <p className="text-xs text-white/75">Academic Leadership</p>
-                    <p className="text-base font-bold text-white mt-1">
+                  <div className="liquid-glass-card card-3d-hover rounded-2xl p-5">
+                    <p className="text-xs font-semibold text-[#0D9488]">
+                      Academic Leadership
+                    </p>
+                    <p className="text-lg font-extrabold text-[#0F293A] mt-1">
                       Professor of Orthodontics
                     </p>
-                    <p className="text-xs text-white/75 mt-1">
-                      Principal (Dental Section), SSCMS Karachi
-                    </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-white/10 backdrop-blur-xs border border-white/15 hover:bg-white/15 transition-all duration-300 hover:-translate-y-0.5">
-                    <p className="text-xs text-white/75">Verified Saddar Location</p>
-                    <p className="text-base font-bold text-white mt-1">
+                  <div className="liquid-glass-card card-3d-hover rounded-2xl p-5">
+                    <p className="text-xs font-semibold text-[#0D9488]">
+                      Central Karachi Clinic
+                    </p>
+                    <p className="text-lg font-extrabold text-[#0F293A] mt-1">
                       101 Abdullah Haroon Rd
                     </p>
-                    <p className="text-xs text-white/75 mt-1">
-                      1st Floor, Near Gulzar Building · 0333 3770353
-                    </p>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal3D>
             </section>
 
-            {/* SECTION 5 — INTRODUCING THE CLINIC */}
-            <section className="py-14 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                <div className="lg:col-span-5">
-                  <div className="bg-white rounded-xl border border-[#E4EAF0] overflow-hidden shadow-xs">
-                    <div className="h-80 w-full overflow-hidden">
+            {/* SECTION 5 — INTRODUCING THE CLINIC (3D Scroll Animation + Clean Copy) */}
+            <section className="py-12 md:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 perspective-stage">
+              <ScrollReveal3D tiltDirection="left">
+                <div className="liquid-glass-panel rounded-3xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  <div className="lg:col-span-5">
+                    <div className="rounded-2xl overflow-hidden border border-white shadow-md h-72 sm:h-80">
                       <ResilientClinicImage
                         src="/assets/clinic/entrance-signage.jpg"
-                        alt="Original entrance door and signboard of Dr. H.R. Sukhia Dental Surgery & Orthodontics at 101 Abdullah Haroon Road"
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        alt="Dr. H.R. Sukhia Dental Surgery & Orthodontics entrance at 101 Abdullah Haroon Road"
+                        className="w-full h-full object-cover hero-photo-vivid transition-transform duration-700 hover:scale-105"
                       />
                     </div>
-                    <div className="p-4 bg-[#F8FAFC] border-t border-[#E4EAF0] text-xs text-[#667582]">
-                      <strong className="text-[#16324F]">Original Clinic Signage:</strong>{' '}
-                      “Dr. H.R. Sukhia Dental Surgery &amp; Orthodontics” above the 1st-floor entrance door in Saddar.
+                  </div>
+
+                  <div className="lg:col-span-7 space-y-4">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#0D9488]">
+                      Established Saddar Practice
+                    </span>
+
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-[#0F293A]">
+                      Specialist Orthodontic &amp; Dental Care in Central Karachi
+                    </h2>
+
+                    <p className="text-sm md:text-base text-[#2C4A5E] leading-relaxed">
+                      Every consultation and braces treatment plan at{' '}
+                      <strong className="text-[#0F293A]">
+                        Dr. H.R. Sukhia Dental Surgery &amp; Orthodontics
+                      </strong>{' '}
+                      is personally supervised by Prof. Dr. H.R. Sukhia in an air-conditioned clinical setting with transparent, reasonable fees.
+                    </p>
+
+                    <div className="pt-3 flex flex-wrap items-center gap-3.5">
+                      <button
+                        type="button"
+                        onClick={() => navigateTo({ page: 'about' })}
+                        className="btn-animated-primary group inline-flex items-center gap-2 px-6 py-3 rounded-full text-white text-xs font-bold cursor-pointer"
+                      >
+                        <span>Meet Prof. Dr. Sukhia</span>
+                        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => navigateTo({ page: 'gallery' })}
+                        className="btn-liquid-secondary inline-flex items-center gap-2 px-5 py-3 rounded-full text-[#0F293A] text-xs font-bold cursor-pointer"
+                      >
+                        View Clinic Photos
+                      </button>
                     </div>
                   </div>
                 </div>
-
-                <div className="lg:col-span-7 space-y-5">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-[#167D83]">
-                    <span>Established Saddar Practice</span>
-                    <span aria-hidden="true">·</span>
-                    <span>Authentic Clinical Heritage</span>
-                  </div>
-
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#16324F]">
-                    A Trusted Orthodontic &amp; Dental Practice on Abdullah Haroon Road
-                  </h2>
-
-                  <p className="text-sm md:text-base text-[#172B3A] leading-relaxed">
-                    Known on its entrance nameplate as{' '}
-                    <strong className="font-signage text-lg font-bold text-[#16324F]">
-                      Dr. H.R. Sukhia Dental Surgery &amp; Orthodontics
-                    </strong>
-                    , HR Sukhia Dental Clinic has served families, students, and working professionals in central Karachi for decades.
-                  </p>
-
-                  <p className="text-sm md:text-base text-[#667582] leading-relaxed">
-                    Unlike impersonal corporate clinics, consultations and orthodontic treatment plans are guided directly by{' '}
-                    <strong className="text-[#172B3A]">Prof. Dr. H.R. Sukhia</strong>. Whether a teenager requires multi-arch fixed braces for crowded teeth or an adult needs a routine dental check-up, care is delivered in an air-conditioned clinical setting with straightforward communication and reasonable fees.
-                  </p>
-
-                  <div className="pt-2 flex flex-wrap items-center gap-4">
-                    <button
-                      type="button"
-                      onClick={() => navigateTo({ page: 'about' })}
-                      className="btn-animated-primary group inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#16324F] text-white text-xs font-semibold hover:bg-[#167D83] transition-colors cursor-pointer"
-                    >
-                      <span>Meet Dr. HR Sukhia</span>
-                      <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => navigateTo({ page: 'gallery' })}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#E4EAF0] bg-white text-[#16324F] text-xs font-semibold hover:border-[#167D83] transition-colors cursor-pointer"
-                    >
-                      Inspect Clinic Photographs
-                    </button>
-                  </div>
-                </div>
-              </div>
+              </ScrollReveal3D>
             </section>
 
-            {/* SECTION 6 — DENTAL SERVICES */}
-            <section className="py-14 md:py-20 bg-white border-y border-[#E4EAF0]">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                  <div className="max-w-2xl">
-                    <div className="flex items-center gap-2 text-xs font-semibold text-[#167D83]">
-                      <span>Confirmed Clinical Services</span>
-                      <span aria-hidden="true">·</span>
-                      <span>Orthodontics &amp; General Dentistry</span>
-                    </div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-[#16324F] mt-2">
-                      Dental Services Offered at the Clinic
+            {/* SECTION 6 — DENTAL SERVICES (3D Tilt Liquid Glass Bento Cards) */}
+            <section className="py-12 md:py-18 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 perspective-stage">
+              <ScrollReveal3D>
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#0D9488]">
+                      Clinical Specialties
+                    </span>
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-[#0F293A] mt-1">
+                      Orthodontics &amp; General Dentistry
                     </h2>
-                    <p className="text-sm md:text-base text-[#667582] mt-2 leading-relaxed">
-                      Fixed orthodontic braces and bite alignment are at the core of our practice, supported by preventive hygiene, general consultations, and restorative dental procedures.
-                    </p>
                   </div>
 
                   <button
                     type="button"
                     onClick={() => navigateTo({ page: 'services' })}
-                    className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#E4EAF0] bg-[#F8FAFC] text-[#16324F] text-xs font-semibold hover:border-[#167D83] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+                    className="btn-liquid-secondary group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[#0F293A] text-xs font-bold whitespace-nowrap shrink-0 cursor-pointer"
                   >
-                    <span>View Complete Service Directory</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                    <span>All Dental Services</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#0D9488] transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
                 </div>
+              </ScrollReveal3D>
 
-                {/* Asymmetric Bento Grid giving prominence to Orthodontics & Fixed Braces */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {SERVICES_DATA.map((service, index) => (
-                    <article
-                      key={service.slug}
-                      className={`group rounded-xl border border-[#E4EAF0] overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-[#167D83]/60 ${
-                        index === 0
-                          ? 'md:col-span-2 lg:col-span-2 bg-[#EAF5F4]/40'
-                          : 'bg-[#F8FAFC]'
-                      }`}
-                    >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {SERVICES_DATA.map((service, index) => (
+                  <ScrollReveal3D
+                    key={service.slug}
+                    delayMs={index * 60}
+                    tiltDirection={index % 2 === 0 ? 'up' : 'right'}
+                    className={index === 0 ? 'md:col-span-2 lg:col-span-2' : ''}
+                  >
+                    <article className="liquid-glass-card card-3d-hover h-full rounded-3xl overflow-hidden flex flex-col justify-between group">
                       <div
                         className={
                           index === 0
@@ -789,49 +674,36 @@ export default function App() {
                           <ResilientClinicImage
                             src={service.image}
                             alt={service.imageAlt}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            className="w-full h-full object-cover hero-photo-vivid transition-transform duration-700 group-hover:scale-105"
                           />
                         </div>
 
                         <div
                           className={
                             index === 0
-                              ? 'lg:col-span-6 p-6 md:p-7 flex flex-col justify-between'
+                              ? 'lg:col-span-6 p-6 md:p-8 flex flex-col justify-between'
                               : 'p-6 flex flex-col justify-between'
                           }
                         >
                           <div>
-                            <div className="flex items-center gap-2 text-xs text-[#667582]">
-                              <span className="font-mono-tabular font-bold text-[#167D83]">
-                                {service.number}.
-                              </span>
-                              <span>{service.category}</span>
-                            </div>
-                            <h3 className="text-lg md:text-xl font-bold text-[#16324F] mt-1.5">
+                            <span className="text-xs font-mono-tabular font-bold text-[#0D9488]">
+                              {service.number} · {service.category}
+                            </span>
+                            <h3 className="text-lg md:text-xl font-extrabold text-[#0F293A] mt-1.5">
                               {service.title}
                             </h3>
-                            <p className="text-xs md:text-sm text-[#667582] mt-2 leading-relaxed">
+                            <p className="text-xs md:text-sm text-[#335268] mt-2 leading-relaxed line-clamp-3">
                               {service.summary}
                             </p>
-                            {index === 0 && (
-                              <div className="mt-4 pt-4 border-t border-[#E4EAF0]">
-                                <p className="text-xs font-semibold text-[#16324F]">
-                                  Conditions on Our In-Clinic Chart:
-                                </p>
-                                <p className="text-xs text-[#667582] mt-1 leading-relaxed">
-                                  Deep Bite · Crowded Teeth · Delayed Eruption · Underbite · Overlapped Teeth · Spacing · Open Bite · Protruded Teeth
-                                </p>
-                              </div>
-                            )}
                           </div>
 
-                          <div className="mt-5 pt-4 border-t border-[#E4EAF0] flex items-center justify-between gap-2">
+                          <div className="mt-5 pt-4 border-t border-teal-900/10 flex items-center justify-between gap-2">
                             <button
                               type="button"
                               onClick={() =>
                                 navigateTo({ page: 'service', slug: service.slug })
                               }
-                              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#16324F] hover:text-[#167D83] transition-colors cursor-pointer"
+                              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0D9488] hover:text-[#0284C7] transition-colors cursor-pointer"
                             >
                               <span>Explore {service.shortTitle}</span>
                               <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -839,285 +711,204 @@ export default function App() {
                             <button
                               type="button"
                               onClick={() => navigateTo({ page: 'contact' })}
-                              className="text-xs font-medium text-[#167D83] hover:underline cursor-pointer"
+                              className="text-xs font-bold text-[#0F293A] hover:text-[#0D9488] cursor-pointer"
                             >
-                              Enquire
+                              Book →
                             </button>
                           </div>
                         </div>
                       </div>
                     </article>
-                  ))}
-                </div>
+                  </ScrollReveal3D>
+                ))}
               </div>
             </section>
 
-            {/* SECTION 7 — THE DENTIST */}
-            <section className="py-14 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="bg-white rounded-xl border border-[#E4EAF0] overflow-hidden shadow-xs">
-                <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-                  <div className="lg:col-span-7 p-7 md:p-10 flex flex-col justify-between">
-                    <div>
-                      <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-[#167D83]">
-                        <span>Principal Orthodontist &amp; Academician</span>
-                        <span aria-hidden="true">·</span>
-                        <span>Verified Institutional Credentials</span>
+            {/* SECTION 7 — THE DENTIST (3D Scroll Reveal + Full Portrait Without Bottom Black Area) */}
+            <section className="py-12 md:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 perspective-stage">
+              <ScrollReveal3D tiltDirection="right">
+                <div className="liquid-glass-panel rounded-3xl p-6 sm:p-10">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+                    {/* Left Column: Full Vertical Portrait of Dr. Sahib (0% bottom black bar) */}
+                    <div className="lg:col-span-5 flex flex-col items-center">
+                      <DrSukhiaPortrait className="max-w-[330px] sm:max-w-[360px]" />
+                    </div>
+
+                    {/* Right Column: About Dr. Sahib & Academic Credentials */}
+                    <div className="lg:col-span-7 flex flex-col justify-between">
+                      <div>
+                        <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0D9488]">
+                          <Award className="w-4 h-4" />
+                          <span>Principal Orthodontist &amp; Dean</span>
+                        </div>
+
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0F293A] mt-2">
+                          {DENTIST_PROFILE.fullName}
+                        </h2>
+                        <p className="text-xs md:text-sm font-mono-tabular font-bold text-[#0D9488] mt-1.5">
+                          {DENTIST_PROFILE.qualificationsString}
+                        </p>
+
+                        <p className="text-sm md:text-base text-[#2C4A5E] mt-4 leading-relaxed">
+                          {DENTIST_PROFILE.shortBio}
+                        </p>
+
+                        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                          {DENTIST_PROFILE.academicAndLeadershipRoles
+                            .slice(0, 4)
+                            .map((role) => (
+                              <div
+                                key={role.role}
+                                className="p-4 rounded-2xl liquid-glass-card card-3d-hover"
+                              >
+                                <p className="text-xs font-extrabold text-[#0F293A]">
+                                  {role.role}
+                                </p>
+                                <p className="text-xs text-[#47657A] mt-1 leading-snug">
+                                  {role.organization}
+                                </p>
+                              </div>
+                            ))}
+                        </div>
                       </div>
 
-                      <h2 className="text-2xl md:text-3xl font-bold text-[#16324F] mt-2">
-                        {DENTIST_PROFILE.fullName} ({DENTIST_PROFILE.fullExpandedName})
-                      </h2>
-                      <p className="text-xs md:text-sm font-mono-tabular font-semibold text-[#167D83] mt-1">
-                        {DENTIST_PROFILE.qualificationsString}
-                      </p>
-
-                      <p className="text-sm md:text-base text-[#172B3A] mt-4 leading-relaxed">
-                        {DENTIST_PROFILE.shortBio}
-                      </p>
-
-                      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                        {DENTIST_PROFILE.academicAndLeadershipRoles.slice(0, 4).map((role) => (
-                          <div
-                            key={role.role}
-                            className="p-3.5 rounded-lg bg-[#F8FAFC] border border-[#E4EAF0]"
-                          >
-                            <p className="text-xs font-bold text-[#16324F]">
-                              {role.role}
-                            </p>
-                            <p className="text-xs text-[#667582] mt-1 leading-snug">
-                              {role.organization}
-                            </p>
-                          </div>
-                        ))}
+                      <div className="mt-7 pt-5 border-t border-teal-900/10 flex flex-wrap items-center gap-3.5">
+                        <button
+                          type="button"
+                          onClick={() => navigateTo({ page: 'about' })}
+                          className="btn-animated-primary group inline-flex items-center gap-2 px-6 py-3 rounded-full text-white text-xs font-bold cursor-pointer"
+                        >
+                          <span>Full Academic Profile</span>
+                          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => navigateTo({ page: 'contact' })}
+                          className="btn-liquid-secondary inline-flex items-center gap-2 px-6 py-3 rounded-full text-[#0F293A] text-xs font-bold cursor-pointer"
+                        >
+                          Book Consultation
+                        </button>
                       </div>
-                    </div>
-
-                    <div className="mt-8 pt-6 border-t border-[#E4EAF0] flex flex-wrap items-center justify-between gap-4">
-                      <button
-                        type="button"
-                        onClick={() => navigateTo({ page: 'about' })}
-                        className="btn-animated-primary group inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#16324F] text-white text-xs font-semibold hover:bg-[#167D83] transition-colors cursor-pointer"
-                      >
-                        <span>Learn More About the Dentist</span>
-                        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                      </button>
-                      <span className="text-xs text-[#667582]">
-                        Author of <em>“Student Orthodontics”</em> · Founding Member, PAO
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="lg:col-span-5 bg-[#F8FAFC] border-t lg:border-t-0 lg:border-l border-[#E4EAF0] flex flex-col justify-between">
-                    <div className="h-72 lg:h-80 w-full overflow-hidden">
-                      <ResilientClinicImage
-                        src="/assets/clinic/treatment-operatory-wide.jpg"
-                        alt="Clinical operatory of Prof. Dr. H.R. Sukhia showing framed Royal College fellowship diplomas on the wall"
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <p className="text-xs font-semibold text-[#167D83]">
-                        Authentic Clinical Environment
-                      </p>
-                      <p className="text-xs text-[#172B3A] mt-1 leading-relaxed">
-                        The clinical operatory at 101 Abdullah Haroon Road displays Prof. Dr. H.R. Sukhia’s framed Royal College diplomas alongside the dual orthodontic chairs and patient case record archive.
-                      </p>
                     </div>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal3D>
             </section>
 
             {/* SECTION 8 — WHY PATIENTS CHOOSE THE CLINIC */}
-            <section className="py-14 md:py-20 bg-[#EAF5F4]/50 border-y border-[#E4EAF0]">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="max-w-2xl mb-10">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-[#167D83]">
-                    <span>Evidence-Based Patient Themes</span>
-                    <span aria-hidden="true">·</span>
-                    <span>Distilled from 127 Google Reviews</span>
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#16324F] mt-2">
-                    Why Patients Choose HR Sukhia Dental Clinic—And What to Expect
+            <section className="py-12 md:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 perspective-stage">
+              <ScrollReveal3D>
+                <div className="max-w-2xl mb-8">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#0D9488]">
+                    Patient Experience
+                  </span>
+                  <h2 className="text-2xl md:text-3xl font-extrabold text-[#0F293A] mt-1">
+                    Why Patients Choose HR Sukhia Dental Clinic
                   </h2>
-                  <p className="text-sm md:text-base text-[#667582] mt-2 leading-relaxed">
-                    Rather than making exaggerated marketing promises, we summarize the genuine strengths and practical considerations reported by real patients in Karachi.
-                  </p>
                 </div>
+              </ScrollReveal3D>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {PATIENT_CHOICE_THEMES.map((item) => (
-                    <div
-                      key={item.number}
-                      className="bg-white rounded-xl border border-[#E4EAF0] p-6 flex flex-col justify-between transition-transform duration-300 hover:-translate-y-1 hover:shadow-xs"
-                    >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                {PATIENT_CHOICE_THEMES.map((item, idx) => (
+                  <ScrollReveal3D key={item.number} delayMs={idx * 70}>
+                    <div className="liquid-glass-card card-3d-hover h-full rounded-2xl p-6 flex flex-col justify-between">
                       <div>
-                        <span className="text-xs font-mono-tabular font-bold text-[#167D83]">
+                        <span className="text-xs font-mono-tabular font-bold text-[#0D9488]">
                           {item.number}
                         </span>
-                        <h3 className="text-base font-bold text-[#16324F] mt-2">
+                        <h3 className="text-base font-extrabold text-[#0F293A] mt-2">
                           {item.title}
                         </h3>
-                        <p className="text-xs md:text-sm text-[#667582] mt-2 leading-relaxed">
+                        <p className="text-xs md:text-sm text-[#335268] mt-2 leading-relaxed">
                           {item.summary}
                         </p>
                       </div>
-                      <p className="text-xs text-[#172B3A] mt-4 pt-3 border-t border-[#E4EAF0]">
-                        {item.evidenceNote}
-                      </p>
                     </div>
-                  ))}
-                </div>
+                  </ScrollReveal3D>
+                ))}
               </div>
             </section>
 
             {/* SECTION 9 — REAL PATIENT REVIEWS */}
-            <section className="py-14 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <ReviewsSection
-                showAllControls={false}
-                onNavigateReviewsPage={() => navigateTo({ page: 'reviews' })}
-              />
+            <section className="py-12 md:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 perspective-stage">
+              <ScrollReveal3D>
+                <ReviewsSection
+                  showAllControls={false}
+                  onNavigateReviewsPage={() => navigateTo({ page: 'reviews' })}
+                />
+              </ScrollReveal3D>
             </section>
 
             {/* SECTION 10 — REAL CLINIC GALLERY */}
-            <section className="py-14 md:py-20 bg-white border-y border-[#E4EAF0]">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <GalleryLightbox showHeader={true} />
-              </div>
-            </section>
-
-            {/* SECTION 11 — HOW TO GET STARTED */}
-            <section className="py-14 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-2xl mb-10">
-                <div className="flex items-center gap-2 text-xs font-semibold text-[#167D83]">
-                  <span>General Visit Flow</span>
-                  <span aria-hidden="true">·</span>
-                  <span>Simple &amp; Straightforward</span>
+            <section className="py-12 md:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 perspective-stage">
+              <ScrollReveal3D>
+                <div className="liquid-glass-panel rounded-3xl p-6 sm:p-10">
+                  <GalleryLightbox showHeader={true} />
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-[#16324F] mt-2">
-                  How to Arrange Your Visit at HR Sukhia Dental Clinic
-                </h2>
-                <p className="text-sm md:text-base text-[#667582] mt-2 leading-relaxed">
-                  Whether you are visiting for an initial fixed braces assessment or a general dental check-up, here is what a typical visit entails.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[
-                  {
-                    step: '01. Contact the Clinic',
-                    title: 'Call 0333 3770353 or Submit an Enquiry',
-                    desc: 'Reach out during afternoon hours or log your preferred date below. Calling ahead confirms the dentist’s daily schedule.',
-                  },
-                  {
-                    step: '02. Priority Slot',
-                    title: 'Arrive at 101 Abdullah Haroon Road',
-                    desc: 'Visit the 1st Floor clinic near Gulzar Building in Saddar. Per our door notice, patients with prior appointments are taken first.',
-                  },
-                  {
-                    step: '03. Clinical Evaluation',
-                    title: 'Discuss Your Concerns with Dr. Sukhia',
-                    desc: 'Undergo a careful examination of tooth alignment, bite relationship, or dental symptoms in an air-conditioned operatory.',
-                  },
-                  {
-                    step: '04. Treatment & Hygiene Plan',
-                    title: 'Receive Clear Recommendations',
-                    desc: 'Review the proposed orthodontic or dental plan, expected timeline, pre-braces scaling needs, and fee estimate.',
-                  },
-                ].map((item) => (
-                  <div
-                    key={item.step}
-                    className="bg-white rounded-xl border border-[#E4EAF0] p-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xs"
-                  >
-                    <span className="text-xs font-mono-tabular font-bold text-[#167D83]">
-                      {item.step}
-                    </span>
-                    <h3 className="text-base font-bold text-[#16324F] mt-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs md:text-sm text-[#667582] mt-2 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              </ScrollReveal3D>
             </section>
 
             {/* SECTION 12 — LOCATION, DIRECTIONS & APPOINTMENT ENQUIRY */}
             <section
               id="location-and-appointment"
-              className="py-14 md:py-20 bg-white border-y border-[#E4EAF0]"
+              className="py-12 md:py-18 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 perspective-stage"
             >
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                  <div className="lg:col-span-5 space-y-6">
+              <ScrollReveal3D>
+                <div className="liquid-glass-panel rounded-3xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                  <div className="lg:col-span-5 space-y-5">
                     <div>
-                      <div className="flex items-center gap-2 text-xs font-semibold text-[#167D83]">
-                        <span>Verified Clinic Location</span>
-                        <span aria-hidden="true">·</span>
-                        <span>Saddar, Karachi</span>
-                      </div>
-                      <h2 className="text-2xl md:text-3xl font-bold text-[#16324F] mt-2">
+                      <span className="text-xs font-bold uppercase tracking-wider text-[#0D9488]">
+                        Saddar, Karachi
+                      </span>
+                      <h2 className="text-2xl md:text-3xl font-extrabold text-[#0F293A] mt-1">
                         Visit Us on Abdullah Haroon Road
                       </h2>
-                      <p className="text-sm text-[#667582] mt-2 leading-relaxed">
-                        Conveniently situated on the 1st Floor at 101 Abdullah Haroon Road (near Gulzar Building) in Saddar, Karachi.
-                      </p>
                     </div>
 
-                    <div className="p-5 rounded-xl bg-[#F8FAFC] border border-[#E4EAF0] space-y-4">
+                    <div className="p-5 rounded-2xl liquid-glass-card space-y-4">
                       <div>
-                        <p className="text-xs font-semibold text-[#167D83]">Address</p>
-                        <p className="text-sm font-bold text-[#16324F] mt-0.5">
+                        <p className="text-xs font-bold text-[#0D9488]">Address</p>
+                        <p className="text-sm font-bold text-[#0F293A] mt-0.5">
                           {CLINIC_INFO.address.fullFormatted}
                         </p>
                       </div>
 
                       <div>
-                        <p className="text-xs font-semibold text-[#167D83]">
+                        <p className="text-xs font-bold text-[#0D9488]">
                           Telephone
                         </p>
                         <a
                           href={CLINIC_INFO.phoneTelHref}
-                          className="text-lg font-bold font-mono-tabular text-[#16324F] hover:text-[#167D83] block mt-0.5"
+                          className="text-lg font-extrabold font-mono-tabular text-[#0F293A] hover:text-[#0D9488] block mt-0.5"
                         >
                           {CLINIC_INFO.phoneInternational}
                         </a>
                       </div>
 
-                      <div className="pt-2 border-t border-[#E4EAF0]">
-                        <p className="text-xs font-semibold text-[#16324F] mb-2">
-                          Verified Opening Hours
+                      <div className="pt-2 border-t border-teal-900/10">
+                        <p className="text-xs font-bold text-[#0F293A] mb-2">
+                          Clinic Hours
                         </p>
                         <div className="space-y-1.5 text-xs">
                           <div className="flex justify-between">
-                            <span className="text-[#667582]">Monday – Wednesday, Friday</span>
-                            <span className="font-mono-tabular font-medium text-[#172B3A]">
+                            <span className="text-[#335268]">Mon – Wed, Fri</span>
+                            <span className="font-mono-tabular font-semibold text-[#0F293A]">
                               3:00 PM – 7:00 PM
                             </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-[#667582]">Thursday (Confirm by Phone)</span>
-                            <span className="font-mono-tabular font-medium text-[#167D83]">
-                              Call 0333 3770353
-                            </span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-[#667582]">Saturday</span>
-                            <span className="font-mono-tabular font-medium text-[#172B3A]">
+                            <span className="text-[#335268]">Saturday</span>
+                            <span className="font-mono-tabular font-semibold text-[#0F293A]">
                               2:00 PM – 7:00 PM
                             </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-[#667582]">Sunday</span>
-                            <span className="font-mono-tabular font-medium text-red-700">
-                              Closed
+                            <span className="text-[#335268]">Thursday</span>
+                            <span className="font-mono-tabular font-semibold text-[#0D9488]">
+                              Call 0333 3770353
                             </span>
                           </div>
                         </div>
-                        <p className="text-[11px] text-[#667582] mt-2.5 leading-relaxed">
-                          Note: The physical plaque on the clinic door lists 2:00 PM – 7:00 PM and notes Thursday &amp; Sunday closed. Always call 0333 3770353 before visiting.
-                        </p>
                       </div>
 
                       <div className="pt-2 flex flex-wrap gap-3">
@@ -1125,16 +916,16 @@ export default function App() {
                           href={CLINIC_INFO.directionsUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-animated-primary inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#16324F] text-white text-xs font-semibold hover:bg-[#167D83] transition-colors whitespace-nowrap shrink-0"
+                          className="btn-animated-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-xs font-bold whitespace-nowrap shrink-0"
                         >
                           <Navigation className="w-3.5 h-3.5" />
                           Get Directions
                         </a>
                         <a
                           href={CLINIC_INFO.phoneTelHref}
-                          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#E4EAF0] bg-white text-[#16324F] text-xs font-semibold hover:border-[#167D83] transition-colors whitespace-nowrap shrink-0"
+                          className="btn-liquid-secondary inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[#0F293A] text-xs font-bold whitespace-nowrap shrink-0"
                         >
-                          <Phone className="w-3.5 h-3.5 text-[#167D83]" />
+                          <Phone className="w-3.5 h-3.5 text-[#0D9488]" />
                           Call {CLINIC_INFO.phoneNational}
                         </a>
                       </div>
@@ -1142,91 +933,94 @@ export default function App() {
                   </div>
 
                   <div className="lg:col-span-7">
-                    <ClinicMap heightClass="h-[440px]" />
+                    <ClinicMap heightClass="h-[420px]" />
                   </div>
                 </div>
+              </ScrollReveal3D>
 
-                {/* Shared Appointment Enquiry Form */}
+              <ScrollReveal3D>
                 <AppointmentEnquiryForm />
-              </div>
+              </ScrollReveal3D>
             </section>
 
             {/* SECTION 13 — FREQUENTLY ASKED QUESTIONS */}
-            <section className="py-14 md:py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-                <div>
-                  <div className="flex items-center gap-2 text-xs font-semibold text-[#167D83]">
-                    <span>Patient Questions Answered</span>
-                    <span aria-hidden="true">·</span>
-                    <span>Verified Clinic Policies</span>
+            <section className="py-12 md:py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 perspective-stage">
+              <ScrollReveal3D>
+                <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#0D9488]">
+                      Common Questions
+                    </span>
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-[#0F293A] mt-1">
+                      Frequently Asked Questions
+                    </h2>
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#16324F] mt-2">
-                    Frequently Asked Questions
-                  </h2>
+                  <button
+                    type="button"
+                    onClick={() => navigateTo({ page: 'faq' })}
+                    className="group text-xs font-bold text-[#0D9488] hover:text-[#0284C7] inline-flex items-center gap-1 cursor-pointer"
+                  >
+                    <span>Open Full FAQ Page</span>
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </button>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => navigateTo({ page: 'faq' })}
-                  className="group text-xs font-semibold text-[#167D83] hover:text-[#16324F] inline-flex items-center gap-1 cursor-pointer"
-                >
-                  <span>Open Full FAQ Page</span>
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-                </button>
-              </div>
 
-              <FAQAccordion />
+                <FAQAccordion />
+              </ScrollReveal3D>
             </section>
 
-            {/* SECTION 14 — FINAL APPOINTMENT CTA */}
-            <section className="bg-[#16324F] text-white py-14 md:py-16 border-t border-white/10">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-                <div className="max-w-2xl">
-                  <p className="text-xs font-semibold text-[#EAF5F4]">
-                    Dr. H.R. Sukhia Dental Surgery &amp; Orthodontics · Saddar, Karachi
-                  </p>
-                  <h2 className="text-2xl md:text-3xl font-bold text-white mt-2">
-                    Ready to Take the Next Step for Your Dental Health?
-                  </h2>
-                  <p className="text-sm md:text-base text-white/80 mt-2.5 leading-relaxed">
-                    Call the clinic directly during afternoon hours to arrange your orthodontic braces consultation or general dental check-up at 101 Abdullah Haroon Road.
-                  </p>
-                </div>
+            {/* SECTION 14 — LUMINOUS LIQUID GLASS APPOINTMENT CTA (No Dark Colors) */}
+            <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 perspective-stage">
+              <ScrollReveal3D>
+                <div className="liquid-glass-panel rounded-3xl p-8 md:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+                  <div className="max-w-2xl">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#0D9488]">
+                      Dr. H.R. Sukhia Dental Surgery &amp; Orthodontics
+                    </span>
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-[#0F293A] mt-2">
+                      Ready to Arrange Your Orthodontic or Dental Visit?
+                    </h2>
+                    <p className="text-sm md:text-base text-[#335268] mt-2 leading-relaxed">
+                      Call the clinic directly during afternoon hours or book your appointment enquiry at 101 Abdullah Haroon Road, Saddar.
+                    </p>
+                  </div>
 
-                <div className="flex flex-wrap items-center gap-3.5 shrink-0">
-                  <a
-                    href={CLINIC_INFO.phoneTelHref}
-                    className="btn-animated-primary inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#167D83] text-white text-sm font-semibold hover:bg-[#136B70] transition-colors whitespace-nowrap shrink-0"
-                  >
-                    <Phone className="w-4 h-4" />
-                    Call the Clinic ({CLINIC_INFO.phoneNational})
-                  </a>
-                  <a
-                    href={CLINIC_INFO.directionsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-white/25 bg-white/10 text-white text-sm font-semibold hover:bg-white/20 transition-colors whitespace-nowrap shrink-0"
-                  >
-                    <Navigation className="w-4 h-4" />
-                    Get Directions
-                  </a>
+                  <div className="flex flex-wrap items-center gap-3.5 shrink-0">
+                    <a
+                      href={CLINIC_INFO.phoneTelHref}
+                      className="btn-animated-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white text-sm font-bold whitespace-nowrap shrink-0"
+                    >
+                      <Phone className="w-4 h-4" />
+                      Call {CLINIC_INFO.phoneNational}
+                    </a>
+                    <a
+                      href={CLINIC_INFO.directionsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-liquid-secondary inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-[#0F293A] text-sm font-bold whitespace-nowrap shrink-0"
+                    >
+                      <Navigation className="w-4 h-4 text-[#0D9488]" />
+                      Get Directions
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </ScrollReveal3D>
             </section>
           </div>
         )}
       </main>
 
-      {/* SECTION 15 — FOOTER */}
-      <footer className="bg-[#0F2338] text-white/80 border-t border-white/10 text-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-14">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-10 border-b border-white/10">
+      {/* SECTION 15 — BRIGHT LIQUID GLASS FOOTER WITH BRANDIER WEB ATTRIBUTION */}
+      <footer className="mt-10 liquid-glass-nav border-t border-white text-[#335268] text-xs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-8 border-b border-teal-900/10">
             {/* Brand & Verified Description */}
             <div className="lg:col-span-4 space-y-3">
-              <ClinicBrandLogo variant="light-text" size="md" showSubtitle={true} />
-              <p className="text-white/70 leading-relaxed pt-1">
-                Specialist orthodontic and dental clinic in Saddar, Karachi, led by Prof. Dr. Hoshang Rumi Sukhia (BDS, BSc, DOrth, MS, FDSRCPS, FFD Orth RCSI, MOrth RCS Ed).
+              <ClinicBrandLogo size="md" showSubtitle={true} />
+              <p className="text-[#47657A] leading-relaxed pt-1">
+                Specialist orthodontic and dental clinic in Saddar, Karachi, led by Prof. Dr. Hoshang Rumi Sukhia (BDS, MS, FDSRCPS, FFD Orth RCSI, MOrth RCS Ed).
               </p>
-              <div className="pt-1 flex items-center gap-1.5 text-white/90 font-mono-tabular">
+              <div className="pt-1 flex items-center gap-1.5 text-[#0F293A] font-mono-tabular font-bold">
                 <span>{liveRating.score}</span>
                 <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                 <span>({liveRating.count} Google Reviews)</span>
@@ -1235,13 +1029,13 @@ export default function App() {
 
             {/* Navigation Links */}
             <div className="lg:col-span-2 space-y-2.5">
-              <h3 className="text-xs font-bold text-white">Clinic Pages</h3>
+              <h3 className="text-xs font-extrabold text-[#0F293A]">Clinic Pages</h3>
               <ul className="space-y-2">
                 <li>
                   <button
                     type="button"
                     onClick={() => navigateTo({ page: 'home' })}
-                    className="hover:text-white transition-colors cursor-pointer"
+                    className="hover:text-[#0D9488] transition-colors cursor-pointer"
                   >
                     Home
                   </button>
@@ -1250,7 +1044,7 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => navigateTo({ page: 'about' })}
-                    className="hover:text-white transition-colors cursor-pointer"
+                    className="hover:text-[#0D9488] transition-colors cursor-pointer"
                   >
                     About Prof. Dr. Sukhia
                   </button>
@@ -1259,7 +1053,7 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => navigateTo({ page: 'reviews' })}
-                    className="hover:text-white transition-colors cursor-pointer"
+                    className="hover:text-[#0D9488] transition-colors cursor-pointer"
                   >
                     Verified Patient Reviews
                   </button>
@@ -1268,25 +1062,25 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => navigateTo({ page: 'gallery' })}
-                    className="hover:text-white transition-colors cursor-pointer"
+                    className="hover:text-[#0D9488] transition-colors cursor-pointer"
                   >
-                    Authentic Clinic Gallery
+                    Clinic Gallery
                   </button>
                 </li>
                 <li>
                   <button
                     type="button"
                     onClick={() => navigateTo({ page: 'faq' })}
-                    className="hover:text-white transition-colors cursor-pointer"
+                    className="hover:text-[#0D9488] transition-colors cursor-pointer"
                   >
-                    Frequently Asked Questions
+                    FAQ
                   </button>
                 </li>
                 <li>
                   <button
                     type="button"
                     onClick={() => navigateTo({ page: 'contact' })}
-                    className="hover:text-white transition-colors cursor-pointer"
+                    className="hover:text-[#0D9488] transition-colors cursor-pointer"
                   >
                     Contact &amp; Directions
                   </button>
@@ -1296,7 +1090,7 @@ export default function App() {
 
             {/* Confirmed Services */}
             <div className="lg:col-span-3 space-y-2.5">
-              <h3 className="text-xs font-bold text-white">Confirmed Services</h3>
+              <h3 className="text-xs font-extrabold text-[#0F293A]">Dental Services</h3>
               <ul className="space-y-2">
                 {SERVICES_DATA.map((service) => (
                   <li key={service.slug}>
@@ -1305,7 +1099,7 @@ export default function App() {
                       onClick={() =>
                         navigateTo({ page: 'service', slug: service.slug })
                       }
-                      className="hover:text-white transition-colors text-left cursor-pointer"
+                      className="hover:text-[#0D9488] transition-colors text-left cursor-pointer"
                     >
                       {service.title}
                     </button>
@@ -1316,28 +1110,28 @@ export default function App() {
 
             {/* Contact & Hours */}
             <div className="lg:col-span-3 space-y-2.5">
-              <h3 className="text-xs font-bold text-white">
-                Location &amp; Verified Contact
+              <h3 className="text-xs font-extrabold text-[#0F293A]">
+                Location &amp; Contact
               </h3>
-              <p className="text-white/75 leading-relaxed">
+              <p className="text-[#335268] leading-relaxed">
                 {CLINIC_INFO.address.fullFormatted}
               </p>
-              <p className="font-mono-tabular text-white font-semibold">
+              <p className="font-mono-tabular text-[#0D9488] font-bold">
                 <a href={CLINIC_INFO.phoneTelHref} className="hover:underline">
                   {CLINIC_INFO.phoneInternational}
                 </a>
               </p>
-              <p className="text-white/70">
-                Mon–Fri: 3:00 PM – 7:00 PM · Sat: 2:00 PM – 7:00 PM (Confirm Thursday by phone)
+              <p className="text-[#47657A]">
+                Mon–Fri: 3:00 PM – 7:00 PM · Sat: 2:00 PM – 7:00 PM
               </p>
               <div className="pt-2 flex flex-wrap items-center gap-3">
                 <a
                   href={CLINIC_INFO.cidUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#EAF5F4] hover:underline inline-flex items-center gap-1"
+                  className="text-[#0D9488] font-semibold hover:underline inline-flex items-center gap-1"
                 >
-                  Google Maps Profile
+                  Google Maps
                   <ExternalLink className="w-3 h-3" />
                 </a>
                 <span aria-hidden="true">·</span>
@@ -1345,46 +1139,42 @@ export default function App() {
                   href={CLINIC_INFO.facebookUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#EAF5F4] hover:underline inline-flex items-center gap-1"
+                  className="text-[#0D9488] font-semibold hover:underline inline-flex items-center gap-1"
                 >
-                  Official Facebook
+                  Facebook
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
             </div>
           </div>
 
-          <div className="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-white/60">
-            <p>
-              © {new Date().getFullYear()} {CLINIC_INFO.name} ({CLINIC_INFO.signageName}). All rights reserved.
-            </p>
-            <div className="flex flex-wrap items-center gap-4">
+          {/* Bottom Attribution Row with Brandier Web Logo & Link */}
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[#47657A]">
+            <div className="flex flex-wrap items-center gap-3">
+              <p>
+                © {new Date().getFullYear()} {CLINIC_INFO.name}. All rights reserved.
+              </p>
+              <span aria-hidden="true">·</span>
               <button
                 type="button"
                 onClick={() => navigateTo({ page: 'privacy' })}
-                className="hover:text-white underline cursor-pointer"
+                className="hover:text-[#0D9488] underline cursor-pointer"
               >
-                Privacy Policy &amp; Verification Inventory
+                Privacy Policy
               </button>
-              <span aria-hidden="true">·</span>
-              <a
-                href="/sitemap.xml"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white"
-              >
-                XML Sitemap
-              </a>
             </div>
+
+            {/* Powered by Brandier Web (links to https://web.brandierstudio.online) */}
+            <BrandierWebFooterBadge />
           </div>
         </div>
       </footer>
 
-      {/* Discreet Mobile Bottom Action Bar (<= 52px height, well within 15% mobile sticky cap) */}
-      <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-[#E4EAF0] px-3 py-2 flex items-center gap-2 shadow-sm">
+      {/* Discreet Mobile Liquid Glass Bottom Action Bar */}
+      <div className="md:hidden fixed bottom-0 inset-x-0 z-40 liquid-glass-nav px-3 py-2 flex items-center gap-2">
         <a
           href={CLINIC_INFO.phoneTelHref}
-          className="btn-animated-primary flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-[#16324F] text-white text-xs font-semibold whitespace-nowrap shrink-0"
+          className="btn-animated-primary flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-full text-white text-xs font-bold whitespace-nowrap shrink-0"
         >
           <Phone className="w-3.5 h-3.5" />
           Call {CLINIC_INFO.phoneNational}
@@ -1393,18 +1183,18 @@ export default function App() {
           href={CLINIC_INFO.directionsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg border border-[#E4EAF0] bg-[#F8FAFC] text-[#16324F] text-xs font-semibold whitespace-nowrap shrink-0"
+          className="btn-liquid-secondary inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-full text-[#0F293A] text-xs font-bold whitespace-nowrap shrink-0"
         >
-          <Navigation className="w-3.5 h-3.5 text-[#167D83]" />
+          <Navigation className="w-3.5 h-3.5 text-[#0D9488]" />
           Directions
         </a>
         <button
           type="button"
           onClick={() => navigateTo({ page: 'contact' })}
-          className="inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-[#EAF5F4] text-[#16324F] text-xs font-semibold whitespace-nowrap shrink-0 cursor-pointer"
+          className="btn-liquid-secondary inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-full text-[#0F293A] text-xs font-bold whitespace-nowrap shrink-0 cursor-pointer"
         >
-          <Calendar className="w-3.5 h-3.5 text-[#167D83]" />
-          Enquire
+          <Calendar className="w-3.5 h-3.5 text-[#0D9488]" />
+          Book
         </button>
       </div>
     </div>

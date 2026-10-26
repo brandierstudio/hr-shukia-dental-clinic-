@@ -160,31 +160,27 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-xl border border-[#E4EAF0] p-6 md:p-8 shadow-xs">
-      <div className="border-b border-[#E4EAF0] pb-5 mb-6">
-        <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[#667582]">
+    <div className="liquid-glass-panel rounded-3xl p-6 md:p-9">
+      <div className="border-b border-teal-900/10 pb-5 mb-6">
+        <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[#0D9488] font-bold">
           <span>Appointment Enquiry Request</span>
           <span aria-hidden="true">·</span>
-          <span className="font-mono-tabular text-[#16324F] font-medium">
+          <span className="font-mono-tabular text-[#0F293A]">
             Direct Desk: {CLINIC_INFO.phoneNational}
           </span>
         </div>
-        <h3 className="text-xl md:text-2xl font-bold text-[#16324F] mt-1.5">
+        <h3 className="text-xl md:text-2xl font-extrabold text-[#0F293A] mt-1.5">
           Request an Appointment or Orthodontic Assessment
         </h3>
-        <p className="text-sm text-[#667582] mt-1.5 leading-relaxed">
+        <p className="text-sm text-[#335268] mt-1.5 leading-relaxed">
           Complete this enquiry form to log your preferred visit window, or call{' '}
           <a
             href={CLINIC_INFO.phoneTelHref}
-            className="text-[#167D83] font-semibold hover:underline"
+            className="text-[#0D9488] font-bold hover:underline"
           >
             {CLINIC_INFO.phoneInternational}
           </a>{' '}
-          directly. Per clinic entrance policy,{' '}
-          <strong className="text-[#172B3A] font-medium">
-            patients with prior appointments are taken first
-          </strong>
-          .
+          directly.
         </p>
       </div>
 
@@ -418,16 +414,16 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
               <span className="block text-xs font-semibold text-[#172B3A] mb-1.5">
                 Preferred Contact Method
               </span>
-              <div className="flex items-center gap-2 p-1 bg-[#F8FAFC] rounded-lg border border-[#E4EAF0]">
+              <div className="flex items-center gap-2 p-1 bg-white/80 rounded-full border border-white">
                 {(['Phone Call', 'SMS'] as const).map((method) => (
                   <button
                     key={method}
                     type="button"
                     onClick={() => handleChange('contactMethod', method)}
-                    className={`flex-1 py-1.5 px-3 text-xs font-medium rounded-md transition-colors whitespace-nowrap shrink-0 ${
+                    className={`flex-1 py-1.5 px-3 text-xs font-bold rounded-full transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                       formData.contactMethod === method
-                        ? 'bg-[#16324F] text-white shadow-2xs'
-                        : 'text-[#667582] hover:text-[#172B3A]'
+                        ? 'btn-animated-primary text-white'
+                        : 'text-[#47657A] hover:text-[#0F293A]'
                     }`}
                   >
                     {method}
@@ -441,40 +437,40 @@ export const AppointmentEnquiryForm: React.FC<AppointmentEnquiryFormProps> = ({
                 htmlFor="enquiry-message"
                 className="block text-xs font-semibold text-[#172B3A] mb-1.5"
               >
-                Brief Note on Dental Concern (Optional — Avoid sensitive medical records)
+                Brief Note on Dental Concern (Optional)
               </label>
               <input
                 id="enquiry-message"
                 name="message"
                 type="text"
                 maxLength={600}
-                placeholder="e.g. Enquiring about fixed braces for crowded upper teeth + pre-braces scaling"
+                placeholder="e.g. Enquiring about fixed braces for crowded teeth"
                 value={formData.message}
                 onChange={(e) => handleChange('message', e.target.value)}
-                className="w-full rounded-lg border border-[#E4EAF0] px-3.5 py-2.5 text-sm text-[#172B3A] bg-[#F8FAFC] focus:bg-white focus:border-[#167D83] focus:outline-none focus:ring-2 focus:ring-[#167D83]/20 transition-colors"
+                className="w-full rounded-lg border border-[#E4EAF0] px-3.5 py-2.5 text-sm text-[#172B3A] bg-[#F8FAFC] focus:bg-white focus:border-[#0D9488] focus:outline-none focus:ring-2 focus:ring-[#0D9488]/20 transition-colors"
               />
             </div>
           </div>
         )}
 
-        <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-[#E4EAF0]">
-          <p className="text-xs text-[#667582] leading-relaxed max-w-xl">
-            <strong className="text-[#172B3A]">Privacy &amp; Clinical Note:</strong> Submitting this form logs an appointment enquiry; it does not replace an in-person clinical evaluation or emergency care.
+        <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-teal-900/10">
+          <p className="text-xs text-[#47657A] leading-relaxed max-w-xl">
+            <strong className="text-[#0F293A]">Note:</strong> Submitting this form logs an appointment enquiry; please call to finalize your exact arrival slot.
           </p>
 
           <div className="flex items-center gap-3 shrink-0">
             <a
               href={CLINIC_INFO.phoneTelHref}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#16324F]/20 bg-white text-[#16324F] text-xs font-semibold hover:border-[#16324F] transition-colors whitespace-nowrap shrink-0"
+              className="btn-liquid-secondary inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[#0F293A] text-xs font-bold whitespace-nowrap shrink-0"
             >
-              <Phone className="w-4 h-4" />
+              <Phone className="w-4 h-4 text-[#0D9488]" />
               Call {CLINIC_INFO.phoneNational}
             </a>
 
             <button
               type="submit"
               disabled={submitting}
-              className="btn-animated-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#16324F] text-white text-xs font-semibold hover:bg-[#167D83] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#167D83] disabled:opacity-60 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="btn-animated-primary inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-white text-xs font-bold disabled:opacity-60 whitespace-nowrap shrink-0 cursor-pointer"
             >
               <Send className="w-4 h-4" />
               {submitting ? 'Logging Enquiry...' : 'Submit Appointment Enquiry'}
